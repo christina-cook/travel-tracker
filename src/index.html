@@ -4,10 +4,43 @@
     <title>Jet Set Go</title>
   </head>
   <body>
-    <h1>Jet Set Go</h1>
-
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-
+    <header>
+      <div class="logo">
+        <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+        <h1>Jet Set Go</h1>
+      </div>
+      <div class="welcome">
+        <p class="welcome-message">Welcome, Traveler!</p>
+        <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+      </div>
+    </header>
+    <section class="login-page hidden">
+    </section>
+    <main class="main-dashboard">
+      <aside class="book-trip">
+        <form class="booking-form">
+        </form>
+      </aside>
+      <section class="trip-display">
+        <div class="travel-cost">
+          <p class="annual-message">You've spent $0 on travel so far in 2021.</p>
+        </div>
+        <section class="trips">
+          <div class="trip-log present">
+            <h3 class="trip-heading">Present Trips</h3>
+          </div>
+          <div class="trip-log upcoming">
+            <h3 class="trip-heading">Upcoming Trips</h3>
+          </div>
+          <div class="trip-log past">
+            <h3 class="trip-heading">Past Trips</h3>
+          </div>
+          <div class="trip-log pending">
+            <h3 class="trip-heading">Pending Trips</h3>
+          </div>
+        </section>
+      </section>
+    </main>
     <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   </body>
 </html>
