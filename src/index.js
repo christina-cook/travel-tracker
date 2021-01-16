@@ -11,6 +11,7 @@ console.log('This is the JavaScript entry file - your code begins here.');
 
 // import fetchRequests from './fetchRequests';
 import Traveler from './traveler';
+import domUpdates from './domUpdates';
 
 let travelers, trips, destinations, currentTraveler;
 
@@ -35,6 +36,7 @@ const createDatasets = (travelerData, tripData, destinationData) => {
   // console.log('trips', trips)
   // console.log('destinations', destinations)
   generateRandomTraveler(travelers);
+  domUpdates.displayWelcomeMessage(currentTraveler);
 }
 
 const generateRandomTraveler = (data) => {
@@ -47,6 +49,7 @@ const generateRandomTraveler = (data) => {
   currentTraveler = new Traveler(dataForRandomTraveler)
   // console.log('currentTraveler', currentTraveler)
   return currentTraveler;
+  // domUpdates.displayWelcomeMessage(currentTraveler);
 }
 
 const onStartup = () => {
