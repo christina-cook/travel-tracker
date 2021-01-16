@@ -37,6 +37,7 @@ const createDatasets = (travelerData, tripData, destinationData) => {
   // console.log('destinations', destinations)
   generateRandomTraveler(travelers);
   domUpdates.displayWelcomeMessage(currentTraveler);
+  domUpdates.addDestinationsToDropdown(destinations);
 }
 
 const generateRandomTraveler = (data) => {
