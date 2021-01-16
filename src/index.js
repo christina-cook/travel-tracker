@@ -10,8 +10,9 @@ import './images/turing-logo.png'
 console.log('This is the JavaScript entry file - your code begins here.');
 
 // import fetchRequests from './fetchRequests';
+import Traveler from './traveler';
 
-let travelers, trips, destinations;
+let travelers, trips, destinations, currentTraveler;
 
 
 const getAllData = () => {
@@ -30,11 +31,23 @@ const createDatasets = (travelerData, tripData, destinationData) => {
   travelers = travelerData.travelers;
   trips = tripData.trips;
   destinations = destinationData.destinations;
-  console.log('travelers', travelers)
-  console.log('trips', trips)
-  console.log('destinations', destinations)
+  // console.log('travelers', travelers)
+  // console.log('trips', trips)
+  // console.log('destinations', destinations)
+  generateRandomTraveler(travelers);
 }
 
+const generateRandomTraveler = (data) => {
+  let userID = Math.floor(Math.random() * data.length);
+  // console.log('userID', userID)
+  let dataForRandomTraveler = data.find(traveler => {
+    return traveler.id === userID;
+  })
+  // console.log('dataForRandomTraveler', dataForRandomTraveler)
+  currentTraveler = new Traveler(dataForRandomTraveler)
+  // console.log('currentTraveler', currentTraveler)
+  return currentTraveler;
+}
 
 const onStartup = () => {
   getAllData();
