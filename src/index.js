@@ -11,6 +11,7 @@ console.log('This is the JavaScript entry file - your code begins here.');
 
 // import fetchRequests from './fetchRequests';
 
+let travelers, trips, destinations;
 
 
 const getAllData = () => {
@@ -22,19 +23,23 @@ const getAllData = () => {
     .then(response => response.json());
 
   Promise.all([getTravelerData, getTripData, getDestinationData])
-    .then(response => {
-      const dataset = {};
-      dataset.travelerData = response[0]
-      dataset.tripData = response[1];
-      dataset.destinationData = response[2];
-      console.log(dataset)
-      return dataset;
-    })
+    .then(data => createDatasets(data[0], data[1], data[2]));
+};
+
+const createDatasets = (travelerData, tripData, destinationData) => {
+  travelers = travelerData.travelers;
+  trips = tripData.trips;
+  destinations = destinationData.destinations;
+  console.log('travelers', travelers)
+  console.log('trips', trips)
+  console.log('destinations', destinations)
 }
+
 
 const onStartup = () => {
   getAllData();
 }
+
 
 
 window.addEventListener('load', onStartup);
