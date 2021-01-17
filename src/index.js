@@ -36,10 +36,10 @@ const getAllData = () => {
     .then(response => response.json());
 
   Promise.all([getTravelerData, getTripData, getDestinationData])
-    .then(data => createDatasets(data[0], data[1], data[2]));
+    .then(data => displayDashboard(data[0], data[1], data[2]));
 };
 
-const createDatasets = (travelerData, tripData, destinationData) => {
+const displayDashboard = (travelerData, tripData, destinationData) => {
   travelers = travelerData.travelers;
   trips = tripData.trips;
   destinations = destinationData.destinations;
