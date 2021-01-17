@@ -13,14 +13,20 @@ class Traveler {
     // this.yearlyTotal;
   }
 
-  addTripsForCurrentTraveler(tripData) {
+  addTripsForCurrentTraveler(tripData, destinationData) {
     const currentUsersTrips = tripData.filter(trip => {
       return trip.userID === this.travelerID;
     })
+    let tripLocation;
     currentUsersTrips.forEach(trip => {
-      this.trips.push(new Trip(trip));
+      destinationData.forEach(destination => {
+        if (trip.destinationID === destination.id) {
+          tripLocation = destination.destination;
+        }
+        return tripLocation;
+      })
+      this.trips.push(new Trip(trip, tripLocation));
     })
-    // console.log('this.trips', this.trips)
     return this.trips;
   }
 
