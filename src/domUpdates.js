@@ -49,9 +49,9 @@ const domUpdates = {
   displayYearlyTotal(currentTraveler) {
     currentTraveler.addTripsForCurrentYear('2020');
     const yearlyCost = document.querySelector('.annual-message');
-    // const cost = currentTraveler.trips[0].calculateTripCost();
-    // console.log('cost', cost)
-    // yearlyCost.innerText = `You've spent $${cost} on travel this year.`;
+    const cost = currentTraveler.calculateYearlyTotal();
+    console.log('cost', cost)
+    yearlyCost.innerText = `You've spent $${cost} on travel this year.`;
   },
 }
 

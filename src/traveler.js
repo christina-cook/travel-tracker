@@ -11,7 +11,6 @@ class Traveler {
     // this.presentTrips = [];
     // this.upcomingTrips = [];
     // this.pendingTrips = [];
-    // this.yearlyTotal;
   }
 
   addTripsForCurrentTraveler(tripData, destinationData) {
@@ -28,7 +27,7 @@ class Traveler {
       })
       this.trips.push(new Trip(trip, tripLocation));
     })
-    console.log('this.trips', this.trips)
+    // console.log('this.trips', this.trips)
     return this.trips;
   }
 
@@ -37,15 +36,20 @@ class Traveler {
       if (trip.departureDate.split('/')[0] === year) {
         this.tripsThisYear.push(trip)
       }
-      console.log('this.tripsThisYear', this.tripsThisYear)
+      // console.log('this.tripsThisYear', this.tripsThisYear)
       return this.tripsThisYear;
     })
   }
 
   calculateYearlyTotal() {
-   // calculate total for all their trips from the current date back 365 days
-   // or calculate the total by passing in a year argument
-    
+    // calculate total for all their trips from the current date back 365 days
+    // or calculate the total by passing in a year argument
+    let totalYearlyCost = this.tripsThisYear.reduce((total, trip) => {
+      total += trip.calculateTripCost();
+      // console.log('reduced total', total)
+      return total;
+    }, 0);
+    return totalYearlyCost.toFixed(0);
   }
 
   // sortTrips() {
