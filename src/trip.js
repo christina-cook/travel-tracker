@@ -1,5 +1,5 @@
 class Trip {
-  constructor(tripData, location) {
+  constructor(tripData, destination) {
     this.tripID = tripData.id;
     this.userID = tripData.userID;
     this.destinationID = tripData.destinationID;
@@ -8,14 +8,14 @@ class Trip {
     this.tripDuration = tripData.duration;
     this.status = tripData.status;
     this.suggestedActivities = tripData.suggestedActivities;
-    this.destination = location;
+    this.destinationInfo = destination;
     this.totalTripCost;
   }
 
-  estimateCostOfTravel() {
+  calculateTripCost(destinationData) {
     // calculate cost of trip
     // include 10% agent fee
-
+    console.log('destinationData', destinationData);
   }
 
   // determineTripStatus() {

@@ -21,12 +21,13 @@ class Traveler {
     currentUsersTrips.forEach(trip => {
       destinationData.forEach(destination => {
         if (trip.destinationID === destination.id) {
-          tripLocation = destination.destination;
+          tripLocation = destination;
         }
         return tripLocation;
       })
       this.trips.push(new Trip(trip, tripLocation));
     })
+    console.log('this.trips', this.trips)
     return this.trips;
   }
 

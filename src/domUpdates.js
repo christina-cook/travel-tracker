@@ -30,7 +30,6 @@ const domUpdates = {
   },
 
   displayTrips(tripData, destinations) {
-    console.log('tripData', tripData)
     const tripDisplay = document.querySelector('.trip-display');
     tripData.forEach(trip => {
       destinations.find(destination => {
@@ -51,6 +50,10 @@ const domUpdates = {
       });
     });
   },
+
+  // displayTripCost(currentTraveler, destinationData) {
+  //
+  // },
 }
 
 export default domUpdates;
