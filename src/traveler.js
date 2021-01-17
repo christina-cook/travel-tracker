@@ -11,6 +11,12 @@ class Traveler {
     // this.yearlyTotal;
   }
 
+  addTripsToUserProfile() {
+    // filter through all the trips data
+    // if the userID on a trip matches the travelerID,
+    // push trip to this.trips (instantiating as a new trip)
+  }
+
   // calculateYearlyTotal() {
   //  calculate total for all their trips from the current date back 365 days
   //  or calculate the total by passing in a year argument
