@@ -14,8 +14,8 @@ class Trip {
 
   calculateTripCost() {
     const hotelCost = this.destinationInfo.estimatedLodgingCostPerDay * this.tripDuration;
-    const roundtripFlightCost = (this.destinationInfo.estimatedFlightCostPerPerson * this.numberOfTravelers) * 2;
-    const totalCost = hotelCost + roundtripFlightCost;
+    const flightCost = this.destinationInfo.estimatedFlightCostPerPerson * this.numberOfTravelers;
+    const totalCost = hotelCost + flightCost;
     const agentFee = totalCost * .10;
     this.totalTripCost = totalCost + agentFee;
     console.log('this.totalTripCost', this.totalTripCost)
