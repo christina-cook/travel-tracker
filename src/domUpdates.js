@@ -38,7 +38,7 @@ const domUpdates = {
         <img class="trip-image" src=${trip.destinationInfo.image} alt=${trip.destinationInfo.alt} height="200px" width="300px">
         <p class="trip-date">Date: ${trip.departureDate}</p>
         <p class="trip-duration">Duration: ${trip.tripDuration} days</p>
-        <p class="trip-participants">Travelers: ${trip.travelers}</p>
+        <p class="trip-participants">Travelers: ${trip.numberOfTravelers}</p>
         <p class="trip-status">Status: ${trip.status.charAt(0).toUpperCase() +
        trip.status.slice(1)}</p>
       </div>
@@ -46,9 +46,10 @@ const domUpdates = {
     });
   },
 
-  // displayTripCost(currentTraveler, destinationData) {
-  //
-  // },
+  displayYearlyTotal(currentTraveler) {
+    const cost = currentTraveler.trips[0].calculateTripCost();
+    console.log('cost', cost)
+  },
 }
 
 export default domUpdates;

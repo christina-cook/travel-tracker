@@ -39,6 +39,7 @@ const displayDashboard = (travelerData, tripData, destinationData) => {
   domUpdates.generateDestinationDropdown(destinations);
   currentTraveler.addTripsForCurrentTraveler(trips, destinations);
   domUpdates.displayTrips(currentTraveler.trips, destinations);
+  domUpdates.displayYearlyTotal(currentTraveler);
 };
 
 const generateRandomTraveler = (travelerData) => {

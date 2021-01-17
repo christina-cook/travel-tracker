@@ -3,7 +3,7 @@ class Trip {
     this.tripID = tripData.id;
     this.userID = tripData.userID;
     this.destinationID = tripData.destinationID;
-    this.travelers = tripData.travelers;
+    this.numberOfTravelers = tripData.travelers;
     this.departureDate = tripData.date;
     this.tripDuration = tripData.duration;
     this.status = tripData.status;
@@ -12,10 +12,16 @@ class Trip {
     this.totalTripCost;
   }
 
-  calculateTripCost(destinationData) {
+  calculateTripCost() {
     // calculate cost of trip
     // include 10% agent fee
-    console.log('destinationData', destinationData);
+    const hotelCost = this.destinationInfo.estimatedLodgingCostPerDay * this.tripDuration;
+    const roundtripFlightCost = (this.destinationInfo.estimatedFlightCostPerPerson * this.numberOfTravelers) * 2;
+    const totalCost = hotelCost + roundtripFlightCost;
+    const agentFee = totalCost * .10;
+    this.totalTripCost = totalCost + agentFee;
+    console.log('this.totalTripCost', this.totalTripCost)
+    return this.totalTripCost;
   }
 
   // determineTripStatus() {
