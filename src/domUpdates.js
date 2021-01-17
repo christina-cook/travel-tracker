@@ -29,25 +29,20 @@ const domUpdates = {
     });
   },
 
-  displayTrips(tripData, destinations) {
+  displayTrips(tripData) {
     const tripDisplay = document.querySelector('.trip-display');
     tripData.forEach(trip => {
-      destinations.find(destination => {
-        if (trip.destinationID === destination.id) {
-          let location = destination.destination
-          tripDisplay.innerHTML += `
-          <div class="trip-card">
-            <h3 class="trip-destination">${location}</h3>
-            <img class="trip-image" src=${destination.image} alt=${destination.alt} height="200px" width="300px">
-            <p class="trip-date">Date: ${trip.departureDate}</p>
-            <p class="trip-duration">Duration: ${trip.tripDuration} days</p>
-            <p class="trip-participants">Travelers: ${trip.travelers}</p>
-            <p class="trip-status">Status: ${trip.status.charAt(0).toUpperCase() +
-           trip.status.slice(1)}</p>
-          </div>
-          `
-        }
-      });
+      tripDisplay.innerHTML += `
+      <div class="trip-card">
+        <h3 class="trip-destination">${trip.destinationInfo.destination}</h3>
+        <img class="trip-image" src=${trip.destinationInfo.image} alt=${trip.destinationInfo.alt} height="200px" width="300px">
+        <p class="trip-date">Date: ${trip.departureDate}</p>
+        <p class="trip-duration">Duration: ${trip.tripDuration} days</p>
+        <p class="trip-participants">Travelers: ${trip.travelers}</p>
+        <p class="trip-status">Status: ${trip.status.charAt(0).toUpperCase() +
+       trip.status.slice(1)}</p>
+      </div>
+      `
     });
   },
 
