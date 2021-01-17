@@ -5,3 +5,97 @@
 // body {
 //   background: $primary-background;
 // }
+
+@import './variables';
+
+body {
+  background: $lightGray;
+  margin: 0;
+  font-family: 'Quicksand', sans-serif;
+}
+
+// HEADER
+
+header {
+  // background: $pink;
+  background: rgba(255, 99, 146, 0.9);
+  margin-bottom: 2%;
+  padding: 2%;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  align-self: flex-end;
+  width: 50%;
+}
+
+.app-logo {
+  margin-right: 4%;
+}
+
+.app-name {
+  font-size: 8vmin;
+  margin: 0;
+  align-self: flex-end;
+}
+
+.welcome {
+  display: flex;
+  align-items: center;
+  align-self: flex-end;
+  width: 50%;
+  justify-content: flex-end;
+}
+
+.welcome-message {
+  margin-right: 2%;
+  font-size: 3vmin;
+}
+
+// FORM
+
+.book-trip {
+  border: solid;
+  border-width: 5px;
+  border-color: $darkBlue;
+  border-radius: 20px;
+
+}
+
+.booking-form {
+  border: solid;
+  border-width: 5px;
+  border-color: $lightBlue;
+  border-radius: 20px;
+  margin: 2%;
+  padding: 2%;
+  display: flex;
+  flex-direction: column;
+}
+
+// .form-title {
+//   text-align: center;
+// }
+
+// TRAVEL SECTION
+
+.travel-cost {
+  border: solid $yellow;
+}
+
+.trip-section {
+  padding: 2%;
+  border: solid $pink;
+}
+
+.all-trips {
+  border: solid;
+}
+
+.trip-card {
+  background-color: $lightBlue;
+}
