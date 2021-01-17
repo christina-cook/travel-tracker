@@ -1,3 +1,5 @@
+import Trip from './trip';
+
 class Traveler {
   constructor(travelerData) {
     this.travelerID = travelerData.id;
@@ -11,10 +13,18 @@ class Traveler {
     // this.yearlyTotal;
   }
 
-  addTripsToUserProfile() {
+  addTripsForCurrentTraveler(tripData) {
     // filter through all the trips data
     // if the userID on a trip matches the travelerID,
     // push trip to this.trips (instantiating as a new trip)
+    const currentUsersTrips = tripData.filter(trip => {
+      return trip.userID === this.travelerID;
+    })
+    currentUsersTrips.forEach(trip => {
+      this.trips.push(new Trip(trip));
+    })
+    // console.log('this.trips', this.trips)
+    return this.trips;
   }
 
   // calculateYearlyTotal() {

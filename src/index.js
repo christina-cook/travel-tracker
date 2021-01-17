@@ -46,7 +46,8 @@ const displayDashboard = (travelerData, tripData, destinationData) => {
   generateRandomTraveler(travelers);
   domUpdates.displayWelcomeMessage(currentTraveler);
   domUpdates.generateDestinationDropdown(destinations);
-  generateTrips(trips);
+  // generateTrips(trips);
+  currentTraveler.addTripsForCurrentTraveler(trips, destinations);
 };
 
 const generateRandomTraveler = (travelerData) => {
@@ -58,15 +59,15 @@ const generateRandomTraveler = (travelerData) => {
   return currentTraveler;
 };
 
-const generateTrips = (tripData) => {
-  let allTrips = [];
-  tripData.forEach(trip => {
-    let newTrip = new Trip(trip);
-    allTrips.push(newTrip);
-  });
-  // console.log('allrips', allTrips)
-  getTripsForCurrentTraveler(allTrips, currentTraveler);
-};
+// const generateTrips = (tripData) => {
+//   let allTrips = [];
+//   tripData.forEach(trip => {
+//     let newTrip = new Trip(trip);
+//     allTrips.push(newTrip);
+//   });
+//   // console.log('allrips', allTrips)
+//   getTripsForCurrentTraveler(allTrips, currentTraveler);
+// };
 
 const getTripsForCurrentTraveler = (tripData, currentTraveler) => {
   const currentUsersTrips = tripData.filter(trip => {
