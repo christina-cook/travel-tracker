@@ -7,9 +7,9 @@ const domUpdates = {
     userTrips.innerText = `${name}'s Trips:`
   },
 
-  addDestinationsToDropdown(data) {
+  generateDestinationDropdown(destinationData) {
     const dropdown = document.querySelector('.dropdown');
-    const alphabetizedDestinations = data.sort((a, b) => {
+    const alphabetizedDestinations = destinationData.sort((a, b) => {
       let destinationA = a.destination;
       let destinationB = b.destination;
       if (destinationA < destinationB) {

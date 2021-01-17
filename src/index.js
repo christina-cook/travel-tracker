@@ -11,12 +11,21 @@ import './images/stewardess.png'
 
 console.log('This is the JavaScript entry file - your code begins here.');
 
+//~~~~~~~~~~// Imports //~~~~~~~~~~//
+
 import Traveler from './traveler';
 import Trip from './trip';
 import domUpdates from './domUpdates';
 
+//~~~~~~~~~~// Global Variables //~~~~~~~~~~//
+
 let travelers, trips, destinations, currentTraveler;
 
+//~~~~~~~~~~// Functions //~~~~~~~~~~//
+
+const onStartup = () => {
+  getAllData();
+};
 
 const getAllData = () => {
   let getTravelerData = fetch('http://localhost:3001/api/v1/travelers')
@@ -34,32 +43,18 @@ const createDatasets = (travelerData, tripData, destinationData) => {
   travelers = travelerData.travelers;
   trips = tripData.trips;
   destinations = destinationData.destinations;
-  // console.log('travelers', travelers)
-  // console.log('trips', trips)
-  // console.log('destinations', destinations)
   generateRandomTraveler(travelers);
   domUpdates.displayWelcomeMessage(currentTraveler);
-  domUpdates.addDestinationsToDropdown(destinations);
+  domUpdates.generateDestinationDropdown(destinations);
   generateTrips(trips);
 };
 
-
-const getTripsForCurrentTraveler = (tripData, currentTraveler) => {
-  const currentUsersTrips = tripData.filter(trip => {
-    return trip.userID === currentTraveler.travelerID;
-  });
-  currentTraveler.trips.push(currentUsersTrips);
-  console.log('currentTravelers trips', currentTraveler.trips)
-  domUpdates.displayTrips(currentUsersTrips, destinations);
-}
-
-const generateRandomTraveler = (data) => {
-  let userID = Math.floor(Math.random() * data.length);
-  let dataForRandomTraveler = data.find(traveler => {
+const generateRandomTraveler = (travelerData) => {
+  let userID = Math.floor(Math.random() * travelerData.length);
+  let dataForRandomTraveler = travelerData.find(traveler => {
     return traveler.id === userID;
   })
   currentTraveler = new Traveler(dataForRandomTraveler);
-  // console.log('currentTraveler', currentTraveler)
   return currentTraveler;
 };
 
@@ -73,11 +68,17 @@ const generateTrips = (tripData) => {
   getTripsForCurrentTraveler(allTrips, currentTraveler);
 };
 
-const onStartup = () => {
-  getAllData();
-};
+const getTripsForCurrentTraveler = (tripData, currentTraveler) => {
+  const currentUsersTrips = tripData.filter(trip => {
+    return trip.userID === currentTraveler.travelerID;
+  });
+  currentTraveler.trips.push(currentUsersTrips);
+  console.log('currentTravelers trips', currentTraveler.trips)
+  domUpdates.displayTrips(currentUsersTrips, destinations);
+}
 
 
 
+//~~~~~~~~~~// Event Listeners //~~~~~~~~~~//
 
 window.addEventListener('load', onStartup);
