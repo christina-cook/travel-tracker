@@ -1,18 +1,9 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-// An example of how you tell webpack to use a CSS (SCSS) file
-import './css/base.scss';
-
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/logo.png'
-import './images/stewardess.png'
-
-
-console.log('This is the JavaScript entry file - your code begins here.');
 
 //~~~~~~~~~~// Imports //~~~~~~~~~~//
 
+import './css/base.scss';
+import './images/logo.png'
+import './images/stewardess.png'
 import Traveler from './traveler';
 import Trip from './trip';
 import domUpdates from './domUpdates';
@@ -21,7 +12,7 @@ import domUpdates from './domUpdates';
 
 let travelers, trips, destinations, currentTraveler;
 
-//~~~~~~~~~~// Functions //~~~~~~~~~~//
+//~~~~~~~~~~// Event Handlers //~~~~~~~~~~//
 
 const onStartup = () => {
   getAllData();
