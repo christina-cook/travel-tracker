@@ -16,10 +16,6 @@ body {
 
 // MAIN
 
-main{
-  display: grid;
-  
-}
 
 // HEADER
 
@@ -62,6 +58,17 @@ header {
   font-size: 3vmin;
 }
 
+// MESSAGE
+
+.travel-cost {
+  margin: 2%;
+  border: solid $yellow;
+}
+
+.annual-message {
+  text-align: center;
+}
+
 // FORM
 
 aside {
@@ -71,6 +78,7 @@ aside {
   border-radius: 20px;
   width: 25%;
   margin-left: 2%;
+  margin-right: 2%;
 }
 
 .booking-form {
@@ -112,19 +120,26 @@ button {
 
 // TRAVEL SECTION
 
-.travel-cost {
-  border: solid $yellow;
-}
 
 .trip-section {
-  padding: 2%;
   border: solid $pink;
+  display: flex;
+
 }
 
 .all-trips {
   border: solid;
+  display: flex;
+  flex-direction: column;
 }
+
+.trip-display {
+  border: solid red;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2%;}
 
 .trip-card {
   background-color: $lightBlue;
+  border-radius: 10px;
 }

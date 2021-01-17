@@ -19,44 +19,45 @@
     <section class="login-page hidden">
     </section>
     <main class="main-dashboard">
-      <aside>
-        <form class="booking-form">
-          <h2 class="form-title">Book Your Next Trip</h2>
-          <p>
-            <label for="destination">Destination:</label>
-            <br>
-              <select id="destination" name="travel-location" class="dropdown">
-              <option value="" disabled selected hidden>Choose a destination</option>
-            </select>
-          </p>
-          <p>
-            <label for="depature-date">Departure Date:</label>
-            <br>
-            <input type="date" id="depature-date" name="departure-date">
-          </p>
-          <p>
-            <label for="duration">Trip Duration (days):</label>
-            <br>
-            <input type="number" id="duration" min="1" class="trip-duration" placeholder="Choose a number">
-          </p>
-          <p>
-            <label for="travelers-number">Number of Travelers:</label>
-            <br>
-            <input type="number" id="travelers-number" min="1" class="trip-duration" placeholder="Choose a number">
-          </p>
-          <div class="form-buttons">
-            <button class="estimate-cost">Estimate Cost</button>
-            <button class="book-trip">Book Trip</button>
-          </div>
-        </form>
-      </aside>
+      <div class="travel-cost">
+        <p class="annual-message">You've spent $0 on travel this year.</p>
+      </div>
       <section class="trip-section">
-        <div class="travel-cost">
-          <p class="annual-message">You've spent $0 on travel this year.</p>
-        </div>
+        <aside>
+          <form class="booking-form">
+            <h2 class="form-title">Book Your Next Trip</h2>
+            <p>
+              <label for="destination">Destination:</label>
+              <br>
+                <select id="destination" name="travel-location" class="dropdown">
+                <option value="" disabled selected hidden>Choose a destination</option>
+              </select>
+            </p>
+            <p>
+              <label for="depature-date">Departure Date:</label>
+              <br>
+              <input type="date" id="depature-date" name="departure-date">
+            </p>
+            <p>
+              <label for="duration">Trip Duration (days):</label>
+              <br>
+              <input type="number" id="duration" min="1" class="trip-duration" placeholder="Choose a number">
+            </p>
+            <p>
+              <label for="travelers-number">Number of Travelers:</label>
+              <br>
+              <input type="number" id="travelers-number" min="1" class="trip-duration" placeholder="Choose a number">
+            </p>
+            <div class="form-buttons">
+              <button class="estimate-cost">Estimate Cost</button>
+              <button class="book-trip">Book Trip</button>
+            </div>
+          </form>
+          <div class="estimated-cost-message"></div>
+        </aside>
         <section class="all-trips">
           <h2 class="user-trips">Trips:</h2>
-            <section class="trip-display"></section>
+          <section class="trip-display"></section>
         </section>
       </section>
     </main>
