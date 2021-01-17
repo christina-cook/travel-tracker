@@ -14,11 +14,17 @@ body {
   font-family: 'Quicksand', sans-serif;
 }
 
+// MAIN
+
+main{
+  display: grid;
+  
+}
+
 // HEADER
 
 header {
   background: $lightBlue;
-  // background: rgba(255, 99, 146, 0.9);
   margin-bottom: 2%;
   padding: 2%;
   display: flex;
@@ -58,12 +64,13 @@ header {
 
 // FORM
 
-.book-trip {
+aside {
   border: solid;
   border-width: 5px;
   border-color: $darkBlue;
   border-radius: 20px;
-
+  width: 25%;
+  margin-left: 2%;
 }
 
 .booking-form {
@@ -72,14 +79,36 @@ header {
   border-color: $lightBlue;
   border-radius: 20px;
   margin: 2%;
-  padding: 2%;
+  padding: 4%;
   display: flex;
   flex-direction: column;
 }
 
-// .form-title {
-//   text-align: center;
-// }
+.form-title {
+  text-align: center;
+}
+
+button {
+  font-family: 'Quicksand', sans-serif;
+  border-radius: 10px
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.estimate-cost {
+  &:hover {
+    background-color: $yellow;
+  }
+}
+
+.book-trip {
+  &:hover {
+    background-color: $darkBlue;
+  }
+}
 
 // TRAVEL SECTION
 
