@@ -14,9 +14,6 @@ class Traveler {
   }
 
   addTripsForCurrentTraveler(tripData) {
-    // filter through all the trips data
-    // if the userID on a trip matches the travelerID,
-    // push trip to this.trips (instantiating as a new trip)
     const currentUsersTrips = tripData.filter(trip => {
       return trip.userID === this.travelerID;
     })
