@@ -1,11 +1,10 @@
 const domUpdates = {
   displayWelcomeMessage(user) {
-    console.log('user', user)
     const welcomeMessage = document.querySelector('.welcome-message');
     const name = user.travelerName.split(' ')[0];
     welcomeMessage.innerText = `Welcome, ${name}!`;
-    console.log('name', name)
   },
+
   addDestinationsToDropdown(data) {
     const dropdown = document.querySelector('.dropdown');
     const alphabetizedDestinations = data.sort((a, b) => {
@@ -25,6 +24,29 @@ const domUpdates = {
           ${destination.destination}
         </option>`;
       dropdown.insertAdjacentHTML('beforeend', destinationOption);
+    });
+  },
+
+  displayTrips(tripData, destinations) {
+    console.log('tripData', tripData)
+    const tripLog = document.querySelector('.trip-log');
+    tripData.forEach(trip => {
+      destinations.find(destination => {
+        if (trip.destinationID === destination.id) {
+          let location = destination.destination
+          tripLog.innerHTML += `
+          <div class="trip-card">
+            <h3 class="trip-destination">${location}</h3>
+            <img class="trip-image" src=${destination.image} alt=${destination.alt}>
+            <p class="trip-date">Date: ${trip.departureDate}</p>
+            <p class="trip-duration">Duration: ${trip.tripDuration} days</p>
+            <p class="trip-participants">Travelers: ${trip.travelers}</p>
+            <p class="trip-status">Status: ${trip.status.charAt(0).toUpperCase() +
+           trip.status.slice(1)}</p>
+          </div>
+          `
+        }
+      });
     });
   },
 }

@@ -9,8 +9,8 @@ import './images/turing-logo.png'
 
 console.log('This is the JavaScript entry file - your code begins here.');
 
-// import fetchRequests from './fetchRequests';
 import Traveler from './traveler';
+import Trip from './trip';
 import domUpdates from './domUpdates';
 
 let travelers, trips, destinations, currentTraveler;
@@ -38,24 +38,43 @@ const createDatasets = (travelerData, tripData, destinationData) => {
   generateRandomTraveler(travelers);
   domUpdates.displayWelcomeMessage(currentTraveler);
   domUpdates.addDestinationsToDropdown(destinations);
+  generateTrips(trips);
+};
+
+
+const getTripsForCurrentTraveler = (tripData, currentTraveler) => {
+  const currentUsersTrips = tripData.filter(trip => {
+    return trip.userID === currentTraveler.travelerID;
+  });
+  currentTraveler.trips.push(currentUsersTrips);
+  console.log('currentTravelers trips', currentTraveler.trips)
+  domUpdates.displayTrips(currentUsersTrips, destinations);
 }
 
 const generateRandomTraveler = (data) => {
   let userID = Math.floor(Math.random() * data.length);
-  // console.log('userID', userID)
   let dataForRandomTraveler = data.find(traveler => {
     return traveler.id === userID;
   })
-  // console.log('dataForRandomTraveler', dataForRandomTraveler)
-  currentTraveler = new Traveler(dataForRandomTraveler)
+  currentTraveler = new Traveler(dataForRandomTraveler);
   // console.log('currentTraveler', currentTraveler)
   return currentTraveler;
-  // domUpdates.displayWelcomeMessage(currentTraveler);
-}
+};
+
+const generateTrips = (tripData) => {
+  let allTrips = [];
+  tripData.forEach(trip => {
+    let newTrip = new Trip(trip);
+    allTrips.push(newTrip);
+  });
+  // console.log('allrips', allTrips)
+  getTripsForCurrentTraveler(allTrips, currentTraveler);
+};
 
 const onStartup = () => {
   getAllData();
-}
+};
+
 
 
 
