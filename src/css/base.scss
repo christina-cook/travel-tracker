@@ -5,3 +5,161 @@
 // body {
 //   background: $primary-background;
 // }
+
+@import './variables';
+
+body {
+  background: $lightGray;
+  margin: 0;
+  font-family: 'Quicksand', sans-serif;
+}
+
+// MAIN
+
+.main-dashboard {
+  width: 100%;
+  margin-right: 2%;
+}
+
+// HEADER
+
+header {
+  background: $lightBlue;
+  margin-bottom: 2%;
+  padding: 2%;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  align-self: flex-end;
+  width: 50%;
+}
+
+.app-logo {
+  margin-right: 2%;
+}
+
+.app-name {
+  font-size: 8vmin;
+  margin: 0;
+  align-self: flex-end;
+}
+
+.welcome {
+  display: flex;
+  align-items: center;
+  align-self: flex-end;
+  width: 50%;
+  justify-content: flex-end;
+}
+
+.welcome-message {
+  margin-right: 2%;
+  font-size: 3vmin;
+}
+
+// MESSAGE
+
+.travel-cost {
+  margin: 2%;
+  border: solid $yellow;
+}
+
+.annual-message {
+  text-align: center;
+}
+
+// FORM
+
+aside {
+  width: 40%;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.booking-form {
+  border: solid;
+  border-width: 4px;
+  border-color: $lightBlue;
+  border-radius: 20px;
+  padding: 4%;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-title {
+  text-align: center;
+}
+
+button {
+  font-family: 'Quicksand', sans-serif;
+  border-radius: 10px
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.estimate-cost {
+  &:hover {
+    background-color: $yellow;
+  }
+}
+
+.book-trip {
+  &:hover {
+    background-color: $darkBlue;
+  }
+}
+
+// TRAVEL SECTION
+
+
+.trip-section {
+  display: flex;
+  width: 96%
+}
+
+.user-trips {
+  padding-left: 1%;
+  font-size: 4vmin;
+}
+
+.all-trips {
+  display: flex;
+  flex-direction: column;
+  width: 98%;
+  margin-right: 2%;
+  margin-bottom: 2%;
+}
+
+// TRIP CARDS
+
+.trip-display {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1.5% 3%;
+}
+
+.trip-card {
+  background-color: $lightBlue;
+  border: solid;
+  border-color: $darkBlue;
+  border-width: 4px;
+  border-radius: 10px;
+  padding: 2%;
+  width: 98%;
+}
+
+.trip-destination {
+  text-align: center;
+}
+
+.trip-image {
+  align-self: center;
+}
