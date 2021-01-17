@@ -13,8 +13,6 @@ class Trip {
   }
 
   calculateTripCost() {
-    // calculate cost of trip
-    // include 10% agent fee
     const hotelCost = this.destinationInfo.estimatedLodgingCostPerDay * this.tripDuration;
     const roundtripFlightCost = (this.destinationInfo.estimatedFlightCostPerPerson * this.numberOfTravelers) * 2;
     const totalCost = hotelCost + roundtripFlightCost;
@@ -24,9 +22,6 @@ class Trip {
     return this.totalTripCost;
   }
 
-  // determineTripStatus() {
-  //   // either pending or approved
-  // }
 }
 
 export default Trip;

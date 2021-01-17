@@ -6,6 +6,7 @@ class Traveler {
     this.travelerName = travelerData.name;
     this.travelerType = travelerData.travelerType;
     this.trips = [];
+    this.tripsThisYear = [];
     // this.pastTrips = [];
     // this.presentTrips = [];
     // this.upcomingTrips = [];
@@ -31,11 +32,22 @@ class Traveler {
     return this.trips;
   }
 
-  // calculateYearlyTotal() {
-  //  calculate total for all their trips from the current date back 365 days
-  //  or calculate the total by passing in a year argument
-  // }
-  //
+  addTripsForCurrentYear(year) {
+    this.trips.filter(trip => {
+      if (trip.departureDate.split('/')[0] === year) {
+        this.tripsThisYear.push(trip)
+      }
+      console.log('this.tripsThisYear', this.tripsThisYear)
+      return this.tripsThisYear;
+    })
+  }
+
+  calculateYearlyTotal() {
+   // calculate total for all their trips from the current date back 365 days
+   // or calculate the total by passing in a year argument
+    
+  }
+
   // sortTrips() {
   //   // sort trips into present, past, upcoming, pending
   // }
