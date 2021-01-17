@@ -39,7 +39,7 @@ const domUpdates = {
           tripDisplay.innerHTML += `
           <div class="trip-card">
             <h3 class="trip-destination">${location}</h3>
-            <img class="trip-image" src=${destination.image} alt=${destination.alt} height="300px" width="300px">
+            <img class="trip-image" src=${destination.image} alt=${destination.alt} height="200px" width="300px">
             <p class="trip-date">Date: ${trip.departureDate}</p>
             <p class="trip-duration">Duration: ${trip.tripDuration} days</p>
             <p class="trip-participants">Travelers: ${trip.travelers}</p>

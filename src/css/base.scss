@@ -16,6 +16,10 @@ body {
 
 // MAIN
 
+.main-dashboard {
+  width: 100%;
+  margin-right: 2%;
+}
 
 // HEADER
 
@@ -72,21 +76,16 @@ header {
 // FORM
 
 aside {
-  border: solid;
-  border-width: 5px;
-  border-color: $darkBlue;
-  border-radius: 20px;
-  width: 25%;
+  width: 40%;
   margin-left: 2%;
   margin-right: 2%;
 }
 
 .booking-form {
   border: solid;
-  border-width: 5px;
+  border-width: 4px;
   border-color: $lightBlue;
   border-radius: 20px;
-  margin: 2%;
   padding: 4%;
   display: flex;
   flex-direction: column;
@@ -122,24 +121,45 @@ button {
 
 
 .trip-section {
-  border: solid $pink;
   display: flex;
+  width: 96%
+}
 
+.user-trips {
+  padding-left: 1%;
+  font-size: 4vmin;
 }
 
 .all-trips {
-  border: solid;
   display: flex;
   flex-direction: column;
+  width: 98%;
+  margin-right: 2%;
+  margin-bottom: 2%;
 }
 
+// TRIP CARDS
+
 .trip-display {
-  border: solid red;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 2%;}
+  grid-gap: 1.5% 3%;
+}
 
 .trip-card {
   background-color: $lightBlue;
+  border: solid;
+  border-color: $darkBlue;
+  border-width: 4px;
   border-radius: 10px;
+  padding: 2%;
+  width: 98%;
+}
+
+.trip-destination {
+  text-align: center;
+}
+
+.trip-image {
+  align-self: center;
 }
