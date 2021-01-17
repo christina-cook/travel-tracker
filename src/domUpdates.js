@@ -2,7 +2,9 @@ const domUpdates = {
   displayWelcomeMessage(user) {
     const welcomeMessage = document.querySelector('.welcome-message');
     const name = user.travelerName.split(' ')[0];
+    const userTrips = document.querySelector('.user-trips');
     welcomeMessage.innerText = `Welcome, ${name}!`;
+    userTrips.innerText = `${name}'s Trips:`
   },
 
   addDestinationsToDropdown(data) {
@@ -29,12 +31,12 @@ const domUpdates = {
 
   displayTrips(tripData, destinations) {
     console.log('tripData', tripData)
-    const tripLog = document.querySelector('.trip-log');
+    const tripDisplay = document.querySelector('.trip-display');
     tripData.forEach(trip => {
       destinations.find(destination => {
         if (trip.destinationID === destination.id) {
           let location = destination.destination
-          tripLog.innerHTML += `
+          tripDisplay.innerHTML += `
           <div class="trip-card">
             <h3 class="trip-destination">${location}</h3>
             <img class="trip-image" src=${destination.image} alt=${destination.alt}>
