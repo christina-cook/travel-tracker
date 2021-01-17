@@ -8,15 +8,35 @@ class Traveler {
     // this.presentTrips = [];
     // this.upcomingTrips = [];
     // this.pendingTrips = [];
-    // this.yearlyAmountSpent = 0;
+    // this.yearlyTotal;
   }
 
-  // calculateYearlyAmountSpent() {
-  //
+  // calculateYearlyTotal() {
+  //  calculate total for all their trips from the current date back 365 days
+  //  or calculate the total by passing in a year argument
   // }
   //
   // sortTrips() {
   //   // sort trips into present, past, upcoming, pending
+  // }
+
+  // sortPending() {
+  //   // if the status of the trip is pending, push trip to pendingTrips
+  // }
+  //
+  // sortUpcoming() {
+  //   // if the departureDate is greater than the current date,
+  //   // push trip to upcomingTrips
+  // }
+  //
+  // sortPast() {
+  //   // if the end date is less than the current date,
+  //   // push trip to pastTrips
+  // }
+  //
+  // sortCurrent() {
+  //   // if the current date greater than the departureDate and less than
+  //   // the end date, push trip to currentTrips
   // }
 }
 
