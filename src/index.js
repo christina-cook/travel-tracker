@@ -19,6 +19,10 @@ const bookTripButton = document.querySelector('.book-trip');
 const loginButton = document.querySelector('.login-button');
 const loginPage = document.querySelector('.login-page');
 const mainDashboard = document.querySelector('.main-dashboard');
+const destination = document.getElementById('trip-destination');
+const departureDate = document.getElementById('departure-date');
+const tripDuration = document.getElementById('trip-duration');
+const totalTravelers = document.getElementById('total-travelers');
 
 //~~~~~~~~~~// Event Handlers //~~~~~~~~~~//
 
@@ -81,10 +85,6 @@ const addNewTrip = () => {
 }
 
 const checkFormInputs = () => {
-  const destination = document.getElementById('trip-destination')
-  const departureDate = document.getElementById('departure-date');
-  const tripDuration = document.getElementById('trip-duration');
-  const totalTravelers = document.getElementById('total-travelers');
   if (destination.value && departureDate.value && tripDuration.value && totalTravelers.value) {
     postNewTrip();
   } else {
@@ -106,17 +106,17 @@ const postNewTrip = () => {
 }
 
 const formatNewTrip = () => {
-  const destination = document.getElementById('trip-destination').value;
-  const departureDate = document.getElementById('departure-date').value.replace(/-/g, '/');
-  const tripDuration = document.getElementById('trip-duration').value;
-  const totalTravelers = document.getElementById('total-travelers').value;
+  const destinatioValue = document.getElementById('trip-destination').value;
+  const departureDateValue = document.getElementById('departure-date').value.replace(/-/g, '/');
+  const tripDurationValue = document.getElementById('trip-duration').value;
+  const totalTravelersValue = document.getElementById('total-travelers').value;
   newTripInfo = {
     id: getRandomTripID(),
     userID: currentTraveler.travelerID,
-    destinationID: findDestinationID(destination).id,
-    travelers: totalTravelers,
-    date: departureDate,
-    duration: tripDuration,
+    destinationID: findDestinationID(destinatioValue).id,
+    travelers: totalTravelersValue,
+    date: departureDateValue,
+    duration: tripDurationValue,
     status: 'pending',
     suggestedActivities: [],
   }
@@ -137,12 +137,16 @@ const findDestinationID = (selectedDestination) => {
 }
 
 const estimateNewTripCost = () => {
-  formatNewTrip();
-  const destinationForNewTrip = destinations.find(destination => newTripInfo.destinationID === destination.id);
-  const newTrip = new Trip(newTripInfo, destinationForNewTrip);
-  const estimatedTripCost = newTrip.calculateTripCost();
-  const tripLocation = newTrip.destinationInfo.destination;
-  domUpdates.displayEstimatedTripCost(estimatedTripCost, tripLocation);
+  if (destination.value && departureDate.value && tripDuration.value && totalTravelers.value) {
+    formatNewTrip();
+    const destinationForNewTrip = destinations.find(destination => newTripInfo.destinationID === destination.id);
+    const newTrip = new Trip(newTripInfo, destinationForNewTrip);
+    const estimatedTripCost = newTrip.calculateTripCost();
+    const tripLocation = newTrip.destinationInfo.destination;
+    domUpdates.displayEstimatedTripCost(estimatedTripCost, tripLocation);
+  } else {
+    window.alert('Please fill out entire form');
+  }
 }
 
 //~~~~~~~~~~// Event Listeners //~~~~~~~~~~//
