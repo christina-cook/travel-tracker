@@ -36,7 +36,8 @@ const displayDashboard = (travelerData, tripData, destinationData) => {
   travelers = travelerData.travelers;
   trips = tripData.trips;
   destinations = destinationData.destinations;
-  generateRandomTraveler(travelers);
+  // generateRandomTraveler(travelers);
+  createTraveler(travelers[5])
   domUpdates.displayWelcomeMessage(currentTraveler);
   domUpdates.generateDestinationDropdown(destinations);
   currentTraveler.addTripsForCurrentTraveler(trips, destinations);
@@ -44,14 +45,20 @@ const displayDashboard = (travelerData, tripData, destinationData) => {
   domUpdates.displayYearlyTotal(currentTraveler);
 };
 
-const generateRandomTraveler = (travelerData) => {
-  let userID = Math.floor(Math.random() * travelerData.length);
-  let dataForRandomTraveler = travelerData.find(traveler => {
-    return traveler.id === userID;
-  })
-  currentTraveler = new Traveler(dataForRandomTraveler);
+// const generateRandomTraveler = (travelerData) => {
+//   let userID = Math.floor(Math.random() * travelerData.length);
+//   let dataForRandomTraveler = travelerData.find(traveler => {
+//     return traveler.id === userID;
+//   })
+//   currentTraveler = new Traveler(dataForRandomTraveler);
+//   return currentTraveler;
+// };
+
+const createTraveler = (travelerData) => {
+  currentTraveler = new Traveler(travelerData);
   return currentTraveler;
-};
+
+}
 
 
 const formatNewTrip = () => {
@@ -87,20 +94,6 @@ const findDestinationID = (selectedDestination) => {
   console.log('newTripDestinationID', newTripDestinationID)
   return newTripDestinationID;
 }
-
-// const postNewTrip = (formattedBody) => {
-//   fetch('http://localhost:3001/api/v1/trips', {
-//     method: 'POST',
-//     headers: {
-//       "Content-Type": "application/json"
-//     },
-//     body: JSON.stringify(formattedBody)
-//   })
-//     .then(response => response.json())
-//     .catch(err => console.error(err))
-//   console.log(currentTraveler.trips);
-//   // updateTrips();
-// }
 
 const updateTrips = () => {
   const newTrip = formatNewTrip();
