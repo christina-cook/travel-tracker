@@ -18,7 +18,6 @@ body {
 
 .main-dashboard {
   width: 100%;
-  margin-right: 2%;
 }
 
 // HEADER
@@ -62,23 +61,47 @@ header {
   font-size: 3vmin;
 }
 
-// MESSAGE
+// TOP SECTION
+
+.top-section {
+  display: flex;
+  width: 100%;
+}
 
 .travel-cost {
+  width: 50%;
+  padding: 2%;
+
+}
+
+.annual-message-display {
   margin: 2%;
   border: solid $yellow;
+  border-radius: 20px;
+  height: 45%;
+  margin-bottom: 4%;
 }
 
 .annual-message {
   text-align: center;
 }
 
+.estimated-cost-display {
+  margin: 2%;
+  border: dotted $pink;
+  height: 45%;
+  border-radius: 20px;
+}
+
+.estimated-cost {
+  text-align: center;
+}
+
 // FORM
 
 aside {
-  width: 40%;
+  width: 50%;
   margin-left: 2%;
-  margin-right: 2%;
 }
 
 .booking-form {
@@ -95,26 +118,18 @@ aside {
   text-align: center;
 }
 
-button {
+.form-button {
   font-family: 'Quicksand', sans-serif;
-  border-radius: 10px
+  border-radius: 10px;
+  &:hover {
+    background-color: $lightBlue;
+    cursor: pointer;
+  }
 }
 
-.form-buttons {
+.form-button-container {
   display: flex;
   justify-content: space-evenly;
-}
-
-.estimate-cost {
-  &:hover {
-    background-color: $yellow;
-  }
-}
-
-.book-trip {
-  &:hover {
-    background-color: $darkBlue;
-  }
 }
 
 // TRAVEL SECTION
@@ -135,6 +150,7 @@ button {
   flex-direction: column;
   width: 98%;
   margin-right: 2%;
+  margin-left: 2%;
   margin-bottom: 2%;
 }
 
@@ -142,8 +158,8 @@ button {
 
 .trip-display {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 1.5% 3%;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1.5% 1.5%;
 }
 
 .trip-card {
@@ -153,13 +169,14 @@ button {
   border-width: 4px;
   border-radius: 10px;
   padding: 2%;
-  width: 98%;
+  max-width: 300px;
+  max-height: 400px;
 }
 
 .trip-destination {
   text-align: center;
 }
 
-.trip-image {
-  align-self: center;
+.card-text {
+  text-align: center;
 }

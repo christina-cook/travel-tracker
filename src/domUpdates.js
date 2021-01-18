@@ -35,11 +35,11 @@ const domUpdates = {
       tripDisplay.innerHTML += `
       <div class="trip-card">
         <h3 class="trip-destination">${trip.destinationInfo.destination}</h3>
-        <img class="trip-image" src=${trip.destinationInfo.image} alt=${trip.destinationInfo.alt} height="200px" width="300px">
-        <p class="trip-date">Date: ${trip.departureDate}</p>
-        <p class="trip-duration">Duration: ${trip.tripDuration} days</p>
-        <p class="trip-participants">Travelers: ${trip.numberOfTravelers}</p>
-        <p class="trip-status">Status: ${trip.status.charAt(0).toUpperCase() +
+        <img class="trip-image" src=${trip.destinationInfo.image} alt=${trip.destinationInfo.alt} height="180px" width="280px">
+        <p class="card-text trip-date">Date: ${trip.departureDate}</p>
+        <p class="card-text trip-duration">Duration: ${trip.tripDuration} days</p>
+        <p class="card-text trip-participants">Travelers: ${trip.numberOfTravelers}</p>
+        <p class="card-text trip-status">Status: ${trip.status.charAt(0).toUpperCase() +
        trip.status.slice(1)}</p>
       </div>
       `
@@ -52,6 +52,10 @@ const domUpdates = {
     const cost = currentTraveler.calculateYearlyTotal();
     yearlyCost.innerText = `You've spent $${cost} on travel this year.`;
   },
+
+  displayTripCost() {
+    console.log('I will show you how much this trip will cost')
+  }
 }
 
 export default domUpdates;
