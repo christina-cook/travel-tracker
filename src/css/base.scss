@@ -70,13 +70,16 @@ header {
 
 .travel-cost {
   width: 50%;
-  height: 100%;
+  padding: 2%;
+
 }
 
 .annual-message-display {
   margin: 2%;
   border: solid $yellow;
-  height: 50%;
+  border-radius: 20px;
+  height: 45%;
+  margin-bottom: 4%;
 }
 
 .annual-message {
@@ -86,7 +89,8 @@ header {
 .estimated-cost-display {
   margin: 2%;
   border: dotted $pink;
-  height: 50%;
+  height: 45%;
+  border-radius: 20px;
 }
 
 .estimated-cost {
@@ -163,7 +167,7 @@ button {
 .trip-display {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 1.5% 3%;
+  grid-gap: 1.5% 1.5%;
 }
 
 .trip-card {
@@ -173,12 +177,14 @@ button {
   border-width: 4px;
   border-radius: 10px;
   padding: 2%;
+  max-width: 300px;
+  max-height: 400px;
 }
 
 .trip-destination {
   text-align: center;
 }
 
-.trip-image {
-  align-self: center;
+.card-text {
+  text-align: center;
 }
