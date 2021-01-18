@@ -22,36 +22,45 @@ const mainDashboard = document.querySelector('.main-dashboard');
 
 //~~~~~~~~~~// Event Handlers //~~~~~~~~~~//
 
-// const checkLoginInputs = () => {
-//   const usernameInput = document.querySelector('.username').value;
-//   const passwordInput = document.querySelector('.password').value;
-//   if (passwordInput === 'travel2020') {
-//     loadPage();
-//   }
-// }
+const checkLoginInputs = () => {
+  event.preventDefault()
+  const usernameInput = document.getElementById('username');
+  const passwordInput = document.getElementById('password');
+  const userID = usernameInput.value.split('').splice(8, 2).join('');
+  console.log(userID)
+  if (usernameInput.value.includes('traveler') && passwordInput.value.includes('travel2020')) {
+    loadPage(+userID);
+  } else {
+    window.alert('Please enter a valid username and password')
+  }
+}
 
-const loadPage = () => {
-  getAllData();
+const loadPage = (userID) => {
+  getAllData(userID);
 };
 
-const getAllData = () => {
+const getAllData = (userID) => {
   let getTravelerData = fetch('http://localhost:3001/api/v1/travelers')
     .then(response => response.json());
   let getTripData = fetch('http://localhost:3001/api/v1/trips')
     .then(response => response.json());
   let getDestinationData = fetch('http://localhost:3001/api/v1/destinations')
     .then(response => response.json());
+  let getSingleTraveler = fetch(`http://localhost:3001/api/v1/travelers/${userID}`)
+    .then(response => response.json());
 
-  Promise.all([getTravelerData, getTripData, getDestinationData])
-    .then(data => displayDashboard(data[0], data[1], data[2]));
+  Promise.all([getTravelerData, getTripData, getDestinationData, getSingleTraveler])
+    .then(data => displayDashboard(data[0], data[1], data[2], data[3]));
 };
 
-const displayDashboard = (travelerData, tripData, destinationData) => {
+const displayDashboard = (travelerData, tripData, destinationData, singleTraveler) => {
   travelers = travelerData.travelers;
   trips = tripData.trips;
   destinations = destinationData.destinations;
+  currentTraveler = new Traveler(singleTraveler);
+  console.log('currentTraveler', currentTraveler)
   // generateRandomTraveler(travelers);
-  createTraveler(travelers[8]);
+  // createTraveler(travelers[8]);
   loginPage.classList.add('hidden');
   mainDashboard.classList.remove('hidden');
   domUpdates.displayWelcomeMessage(currentTraveler);
@@ -70,10 +79,10 @@ const displayDashboard = (travelerData, tripData, destinationData) => {
 //   return currentTraveler;
 // };
 
-const createTraveler = (travelerData) => {
-  currentTraveler = new Traveler(travelerData);
-  return currentTraveler;
-}
+// const createTraveler = (travelerData) => {
+//   currentTraveler = new Traveler(travelerData);
+//   return currentTraveler;
+// }
 
 const updateTrips = () => {
   const newTrip = formatNewTrip();
@@ -133,4 +142,4 @@ const estimateNewTripCost = () => {
 // window.addEventListener('load', loadPage);
 estimateCostButton.addEventListener('click', estimateNewTripCost);
 bookTripButton.addEventListener('click', updateTrips);
-loginButton.addEventListener('click', loadPage);
+loginButton.addEventListener('click', checkLoginInputs);
