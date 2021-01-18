@@ -2,13 +2,9 @@
 //~~~~~~~~~~// Imports //~~~~~~~~~~//
 
 @import './variables';
+@import './extensions';
 
 //~~~~~~~~~~// General //~~~~~~~~~~//
-
-html {
-  height: 100vh;
-  width: 100%;
-}
 
 body {
   background: $lightGray;
@@ -33,10 +29,7 @@ header {
 }
 
 .logo {
-  display: flex;
-  align-items: center;
-  align-self: flex-end;
-  width: 50%;
+  @extend .header-display;
 }
 
 .app-logo {
@@ -50,10 +43,7 @@ h1 {
 }
 
 .welcome {
-  display: flex;
-  align-items: center;
-  align-self: flex-end;
-  width: 50%;
+  @extend .header-display;
   justify-content: flex-end;
 }
 
@@ -72,13 +62,11 @@ h1 {
 .travel-cost {
   width: 50%;
   padding: 2%;
-
 }
 
 .annual-message-display {
   border: solid $yellow;
-  border-radius: 20px;
-  height: 45%;
+  @extend .top-section-border;
   margin-bottom: 4%;
 }
 
@@ -91,8 +79,7 @@ h1 {
 
 .estimated-cost-display {
   border: dotted $pink;
-  height: 45%;
-  border-radius: 20px;
+  @extend .top-section-border;
 }
 
 //~~~~~~~~~~// Form //~~~~~~~~~~//
@@ -103,9 +90,7 @@ h1 {
 }
 
 .booking-form {
-  border: solid;
-  border-width: 4px;
-  border-color: $lightBlue;
+  border: solid 4px $lightBlue;
   border-radius: 20px;
   padding: 4%;
   display: flex;
@@ -144,13 +129,10 @@ h1 {
 }
 
 .all-trips {
-  display: flex;
   flex-direction: column;
   width: 98%;
-  margin-right: 2%;
-  margin-left: 2%;
-  margin-bottom: 2%;
-}
+  margin: 0% 2% 2% 4%;
+  }
 
 //~~~~~~~~~~// Trip Cards //~~~~~~~~~~//
 
@@ -162,9 +144,7 @@ h1 {
 
 .trip-card {
   background-color: $lightBlue;
-  border: solid;
-  border-color: $darkBlue;
-  border-width: 4px;
+  border: solid 4px $darkBlue;
   border-radius: 10px;
   padding: 2%;
   max-width: 300px;
@@ -241,7 +221,6 @@ h1 {
   }
 
   .top-section {
-    display: flex;
     flex-direction: column;
   }
 
