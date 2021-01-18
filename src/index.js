@@ -66,6 +66,10 @@ const postNewTrip = (newTripInfo) => {
     .catch(err => console.error(err))
 }
 
+const getRandomTripID = () => {
+  return Math.floor(Math.random() * (900 - 201) + 201);
+}
+
 const formatNewTripForPost = () => {
   const destination = document.querySelector('.destination-select').value;
   const departureDate = document.querySelector('.departure-date').value;
@@ -75,9 +79,18 @@ const formatNewTripForPost = () => {
   console.log('departureDate', departureDate)
   console.log('tripDuration', tripDuration)
   console.log('totalTravelers', totalTravelers)
-  // const newTripInfo = {
-  //   id:
-  // }
+  const newTripInfo = {
+    tripID: getRandomTripID(),
+    // userID:
+    // destinationID:
+    numberOfTravelers: totalTravelers,
+    departureDate: departureDate,
+    tripDuration: tripDuration,
+    status: 'pending',
+    suggestedActivities: [],
+    // destinationInfo:
+  }
+  console.log('newTripInfo', newTripInfo)
 }
 
 //~~~~~~~~~~// Event Listeners //~~~~~~~~~~//
