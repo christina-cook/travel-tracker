@@ -9,3 +9,13 @@
   border-radius: 20px;
   height: 45%;
 }
+
+.button {
+  font-family: 'Quicksand', sans-serif;
+  border-radius: 5px;
+  border-color: $lightBlue;
+  &:hover {
+    cursor: pointer;
+    border-color: $pink;
+  }
+}
