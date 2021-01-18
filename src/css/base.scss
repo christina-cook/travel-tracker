@@ -18,7 +18,6 @@ body {
 
 .main-dashboard {
   width: 100%;
-  margin-right: 2%;
 }
 
 // HEADER
@@ -62,11 +61,18 @@ header {
   font-size: 3vmin;
 }
 
-// MESSAGE
+// TOP SECTION
+
+.top-section {
+  display: flex;
+  width: 100%;
+}
 
 .travel-cost {
   margin: 2%;
   border: solid $yellow;
+  width: 50%;
+  height: 50%;
 }
 
 .annual-message {
@@ -76,7 +82,7 @@ header {
 // FORM
 
 aside {
-  width: 40%;
+  width: 50%;
   margin-left: 2%;
   margin-right: 2%;
 }
@@ -135,6 +141,7 @@ button {
   flex-direction: column;
   width: 98%;
   margin-right: 2%;
+  margin-left: 2%;
   margin-bottom: 2%;
 }
 
@@ -142,7 +149,7 @@ button {
 
 .trip-display {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: 1.5% 3%;
 }
 
@@ -153,7 +160,8 @@ button {
   border-width: 4px;
   border-radius: 10px;
   padding: 2%;
-  width: 98%;
+  // width: %;
+  // align-items: center;
 }
 
 .trip-destination {
