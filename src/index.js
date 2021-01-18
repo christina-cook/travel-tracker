@@ -11,6 +11,8 @@ import domUpdates from './domUpdates';
 //~~~~~~~~~~// Global Variables //~~~~~~~~~~//
 
 let travelers, trips, destinations, currentTraveler;
+const estimateCostButton = document.querySelector('.estimate-cost');
+const bookTripButton = document.querySelector('.book-trip');
 
 //~~~~~~~~~~// Event Handlers //~~~~~~~~~~//
 
@@ -51,6 +53,14 @@ const generateRandomTraveler = (travelerData) => {
   return currentTraveler;
 };
 
+const addNewTrip = () => {
+  console.log('You added a new trip!');
+}
+
 //~~~~~~~~~~// Event Listeners //~~~~~~~~~~//
 
 window.addEventListener('load', onStartup);
+estimateCostButton.addEventListener('click', function() {
+  domUpdates.displayTripCost();
+});
+bookTripButton.addEventListener('click', addNewTrip);

@@ -52,6 +52,10 @@ const domUpdates = {
     const cost = currentTraveler.calculateYearlyTotal();
     yearlyCost.innerText = `You've spent $${cost} on travel this year.`;
   },
+
+  displayTripCost() {
+    console.log('I will show you how much this trip will cost')
+  }
 }
 
 export default domUpdates;
