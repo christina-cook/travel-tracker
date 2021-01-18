@@ -112,8 +112,10 @@ const estimateNewTripCost = () => {
   const destinationForNewTrip = destinations.find(destination => newTripInfo.destinationID === destination.id);
   const newTrip = new Trip(newTripInfo, destinationForNewTrip);
   const estimatedTripCost = newTrip.calculateTripCost();
+  const tripLocation = newTrip.destinationInfo.destination;
   console.log('estimatedTripCost', estimatedTripCost)
-  // domUpdates.displayEstimatedTripCost(estimatedTripCost);
+  console.log('tripLocation', tripLocation)
+  domUpdates.displayEstimatedTripCost(estimatedTripCost, tripLocation);
 }
 
 //~~~~~~~~~~// Event Listeners //~~~~~~~~~~//

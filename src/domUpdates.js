@@ -53,9 +53,10 @@ const domUpdates = {
     yearlyCost.innerText = `You've spent $${cost} on travel this year.`;
   },
 
-  displayEstimatedTripCost() {
-    console.log('I will show you how much this trip will cost')
-    
+  displayEstimatedTripCost(estimatedCost, location) {
+    event.preventDefault();
+    const estimatedCostText = document.querySelector('.estimated-cost');
+    estimatedCostText.innerText = `The estimated cost for your trip to ${location} is $${estimatedCost}.`
   }
 }
 
