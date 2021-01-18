@@ -69,7 +69,13 @@ const domUpdates = {
   clearForm() {
     const bookingForm = document.querySelector('.booking-form');
     bookingForm.reset();
+  },
+
+  updateTripCostMessage() {
+    const estimatedCostText = document.querySelector('.estimated-cost');
+    estimatedCostText.innerText = `Fill out the form to book your next trip.`
   }
+
 }
 
 export default domUpdates;

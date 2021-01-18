@@ -94,6 +94,7 @@ const addNewTrip = () => {
   checkFormInputs();
   domUpdates.clearDashboard();
   loadPage(currentTraveler.travelerID);
+  domUpdates.updateTripCostMessage();
 }
 
 const checkFormInputs = () => {
