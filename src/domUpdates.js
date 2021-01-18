@@ -47,14 +47,15 @@ const domUpdates = {
   },
 
   displayYearlyTotal(currentTraveler) {
-    currentTraveler.addTripsForCurrentYear('2020');
+    currentTraveler.addTripsForCurrentYear('2021');
     const yearlyCost = document.querySelector('.annual-message');
     const cost = currentTraveler.calculateYearlyTotal();
     yearlyCost.innerText = `You've spent $${cost} on travel this year.`;
   },
 
-  displayTripCost() {
+  displayEstimatedTripCost() {
     console.log('I will show you how much this trip will cost')
+    
   }
 }
 

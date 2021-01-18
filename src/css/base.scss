@@ -82,8 +82,11 @@ header {
   margin-bottom: 4%;
 }
 
-.annual-message {
+.annual-message,
+.estimated-cost {
   text-align: center;
+  font-size: 3vmin;
+  padding: 2%;
 }
 
 .estimated-cost-display {
@@ -93,8 +96,15 @@ header {
   border-radius: 20px;
 }
 
-.estimated-cost {
-  text-align: center;
+.hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
 }
 
 // FORM
