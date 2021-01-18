@@ -40,7 +40,7 @@ const loadPage = (userID) => {
 
 const getAllData = (userID) => {
   let getTravelerData = fetch('http://localhost:3001/api/v1/travelers')
-    .then(response => response.json());
+    .then(response => response.json())
   let getTripData = fetch('http://localhost:3001/api/v1/trips')
     .then(response => response.json());
   let getDestinationData = fetch('http://localhost:3001/api/v1/destinations')
@@ -49,7 +49,8 @@ const getAllData = (userID) => {
     .then(response => response.json());
 
   Promise.all([getTravelerData, getTripData, getDestinationData, getSingleTraveler])
-    .then(data => createDatasets(data[0], data[1], data[2], data[3]));
+    .then(data => createDatasets(data[0], data[1], data[2], data[3]))
+    .catch(error => window.alert('Oops! Something went wrong.'))
 };
 
 const createDatasets = (travelerData, tripData, destinationData, singleTraveler) => {
@@ -118,7 +119,7 @@ const postNewTrip = () => {
     body: JSON.stringify(newTrip)
   })
     .then(response => response.json())
-    .catch(err => console.log(err))
+    .catch(error => window.alert('Oops! Something went wrong.'))
 }
 
 const formatNewTrip = () => {
