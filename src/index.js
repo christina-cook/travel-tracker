@@ -23,11 +23,10 @@ const mainDashboard = document.querySelector('.main-dashboard');
 //~~~~~~~~~~// Event Handlers //~~~~~~~~~~//
 
 const checkLoginInputs = () => {
-  event.preventDefault()
+  event.preventDefault();
   const usernameInput = document.getElementById('username');
   const passwordInput = document.getElementById('password');
   const userID = usernameInput.value.split('').splice(8, 2).join('');
-  console.log(userID)
   if (usernameInput.value.includes('traveler') && passwordInput.value.includes('travel2020')) {
     loadPage(+userID);
   } else {
@@ -50,10 +49,10 @@ const getAllData = (userID) => {
     .then(response => response.json());
 
   Promise.all([getTravelerData, getTripData, getDestinationData, getSingleTraveler])
-    .then(data => displayDashboard(data[0], data[1], data[2], data[3]));
+    .then(data => createDatasets(data[0], data[1], data[2], data[3]));
 };
 
-const displayDashboard = (travelerData, tripData, destinationData, singleTraveler) => {
+const createDatasets = (travelerData, tripData, destinationData, singleTraveler) => {
   travelers = travelerData.travelers;
   trips = tripData.trips;
   destinations = destinationData.destinations;
@@ -61,6 +60,10 @@ const displayDashboard = (travelerData, tripData, destinationData, singleTravele
   console.log('currentTraveler', currentTraveler)
   // generateRandomTraveler(travelers);
   // createTraveler(travelers[8]);
+  displayDashboard();
+};
+
+const displayDashboard = () => {
   loginPage.classList.add('hidden');
   mainDashboard.classList.remove('hidden');
   domUpdates.displayWelcomeMessage(currentTraveler);
@@ -84,8 +87,13 @@ const displayDashboard = (travelerData, tripData, destinationData, singleTravele
 //   return currentTraveler;
 // }
 
-const updateTrips = () => {
+const addNewTrip = () => {
   event.preventDefault();
+  postNewTrip();
+  console.log('currentTraveler trips', currentTraveler.trips);
+}
+
+const postNewTrip = () => {
   const newTrip = formatNewTrip();
   return fetch('http://localhost:3001/api/v1/trips', {
     method: 'POST',
@@ -95,7 +103,7 @@ const updateTrips = () => {
     body: JSON.stringify(newTrip)
   })
     .then(response => response.json())
-    .catch(err => console.error(err))
+    .catch(err => console.log(err))
 }
 
 const formatNewTrip = () => {
@@ -142,5 +150,5 @@ const estimateNewTripCost = () => {
 
 // window.addEventListener('load', loadPage);
 estimateCostButton.addEventListener('click', estimateNewTripCost);
-bookTripButton.addEventListener('click', updateTrips);
+bookTripButton.addEventListener('click', addNewTrip);
 loginButton.addEventListener('click', checkLoginInputs);
