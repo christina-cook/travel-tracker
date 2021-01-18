@@ -90,16 +90,15 @@ const displayDashboard = () => {
 const addNewTrip = () => {
   event.preventDefault();
   checkFormInputs();
-  // postNewTrip();
-  console.log('currentTraveler trips', currentTraveler.trips);
+  //clearForm();
 }
 
 const checkFormInputs = () => {
-  const destination = document.getElementById('trip-destination').value;
-  const departureDate = document.getElementById('departure-date').value.replace(/-/g, '/');
-  const tripDuration = document.getElementById('trip-duration').value;
-  const totalTravelers = document.getElementById('total-travelers').value;
-  if (destination && departureDate && tripDuration && totalTravelers) {
+  const destination = document.getElementById('trip-destination')
+  const departureDate = document.getElementById('departure-date');
+  const tripDuration = document.getElementById('trip-duration');
+  const totalTravelers = document.getElementById('total-travelers');
+  if (destination.value && departureDate.value && tripDuration.value && totalTravelers.value) {
     postNewTrip();
   } else {
     window.alert('Please fill out entire form');
