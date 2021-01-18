@@ -11,6 +11,9 @@ import domUpdates from './domUpdates';
 //~~~~~~~~~~// Global Variables //~~~~~~~~~~//
 
 let travelers, trips, destinations, currentTraveler, newTripInfo;
+
+//~~~~~~~~~~// Query Selectors //~~~~~~~~~~//
+
 const estimateCostButton = document.querySelector('.estimate-cost');
 const bookTripButton = document.querySelector('.book-trip');
 
