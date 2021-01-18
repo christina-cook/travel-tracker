@@ -66,32 +66,37 @@ const postNewTrip = (newTripInfo) => {
     .catch(err => console.error(err))
 }
 
-const getRandomTripID = () => {
-  return Math.floor(Math.random() * (900 - 201) + 201);
-}
-
 const formatNewTripForPost = () => {
   const destination = document.getElementById('trip-destination').value;
-  const departureDate = document.getElementById('departure-date').value;
+  const departureDate = document.getElementById('departure-date').value.replace(/-/g, '/');
   const tripDuration = document.getElementById('trip-duration').value;
   const totalTravelers = document.getElementById('total-travelers').value;
-  console.log('destination', destination)
-  console.log('departureDate', departureDate)
-  console.log('tripDuration', tripDuration)
-  console.log('totalTravelers', totalTravelers)
   const newTripInfo = {
     tripID: getRandomTripID(),
-    // userID:
-    // destinationID:
+    userID: currentTraveler.travelerID,
     numberOfTravelers: totalTravelers,
     departureDate: departureDate,
     tripDuration: tripDuration,
     status: 'pending',
     suggestedActivities: [],
-    // destinationInfo:
+    destinationInfo: findDestinationByName(destination)
   }
   console.log('newTripInfo', newTripInfo)
   return newTripInfo;
+}
+
+const getRandomTripID = () => {
+  return Math.floor(Math.random() * (900 - 201) + 201);
+}
+
+const findDestinationByName = (selectedDestination) => {
+  const destinationForNewTrip = destinations.find(destination => {
+    if (destination.destination.includes(selectedDestination)) {
+      return destination;
+    }
+  });
+  console.log('destinationForNewTrip', destinationForNewTrip)
+  return destinationForNewTrip;
 }
 
 //~~~~~~~~~~// Event Listeners //~~~~~~~~~~//
