@@ -53,8 +53,28 @@ const generateRandomTraveler = (travelerData) => {
   return currentTraveler;
 };
 
-const addNewTrip = () => {
+const postNewTrip = (newTripInfo) => {
   console.log('You added a new trip!');
+  fetch('http://localhost:3001/api/v1/trips', {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(newTripInfo)
+  })
+    .then(response => response.json())
+    .catch(err => console.error(err))
+}
+
+const formatNewTripForPost = () => {
+  const destination = document.querySelector('.destination-dropdown-value').value;
+  const departureDate = document.querySelector('.departure-date').value;
+  const tripDuration = document.querySelector('.trip-duration').value;
+  const totalTravelers = document.querySelector('.total-travelers').value;
+  console.log('destination', destination)
+  console.log('departureDate', departureDate)
+  console.log('tripDuration', tripDuration)
+  console.log('totalTravelers', totalTravelers)
 }
 
 //~~~~~~~~~~// Event Listeners //~~~~~~~~~~//
@@ -63,4 +83,4 @@ window.addEventListener('load', onStartup);
 estimateCostButton.addEventListener('click', function() {
   domUpdates.displayTripCost();
 });
-bookTripButton.addEventListener('click', addNewTrip);
+bookTripButton.addEventListener('click', formatNewTripForPost);

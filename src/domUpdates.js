@@ -22,7 +22,7 @@ const domUpdates = {
     });
     alphabetizedDestinations.forEach(destination => {
       let destinationOption = `
-        <option value=${destination.destination} id=${destination.id}>
+        <option class="destination-dropdown-value" value=${destination.destination} id=${destination.id}>
           ${destination.destination}
         </option>`;
       dropdown.insertAdjacentHTML('beforeend', destinationOption);
