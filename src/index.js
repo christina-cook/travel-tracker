@@ -71,10 +71,10 @@ const getRandomTripID = () => {
 }
 
 const formatNewTripForPost = () => {
-  const destination = document.querySelector('.destination-select').value;
-  const departureDate = document.querySelector('.departure-date').value;
-  const tripDuration = document.querySelector('.trip-duration').value;
-  const totalTravelers = document.querySelector('.total-travelers').value;
+  const destination = document.getElementById('trip-destination').value;
+  const departureDate = document.getElementById('departure-date').value;
+  const tripDuration = document.getElementById('trip-duration').value;
+  const totalTravelers = document.getElementById('total-travelers').value;
   console.log('destination', destination)
   console.log('departureDate', departureDate)
   console.log('tripDuration', tripDuration)
@@ -91,6 +91,7 @@ const formatNewTripForPost = () => {
     // destinationInfo:
   }
   console.log('newTripInfo', newTripInfo)
+  return newTripInfo;
 }
 
 //~~~~~~~~~~// Event Listeners //~~~~~~~~~~//
