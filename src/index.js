@@ -60,13 +60,24 @@ const createTraveler = (travelerData) => {
 
 }
 
+const updateTrips = () => {
+  const newTrip = formatNewTrip();
+  return fetch('http://localhost:3001/api/v1/trips', {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(newTrip)
+  })
+    .then(response => response.json())
+    .catch(err => console.error(err))
+}
 
 const formatNewTrip = () => {
   const destination = document.getElementById('trip-destination').value;
   const departureDate = document.getElementById('departure-date').value.replace(/-/g, '/');
   const tripDuration = document.getElementById('trip-duration').value;
   const totalTravelers = document.getElementById('total-travelers').value;
-  console.log('destination', destination)
   newTripInfo = {
     id: getRandomTripID(),
     userID: currentTraveler.travelerID,
@@ -77,7 +88,6 @@ const formatNewTrip = () => {
     status: 'pending',
     suggestedActivities: [],
   }
-  console.log('newTripInfo', newTripInfo)
   return newTripInfo;
 }
 
@@ -91,21 +101,7 @@ const findDestinationID = (selectedDestination) => {
       return destination.id;
     }
   });
-  console.log('newTripDestinationID', newTripDestinationID)
   return newTripDestinationID;
-}
-
-const updateTrips = () => {
-  const newTrip = formatNewTrip();
-  return fetch('http://localhost:3001/api/v1/trips', {
-    method: 'POST',
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(newTrip)
-  })
-    .then(response => response.json())
-    .catch(err => console.error(err))
 }
 
 //~~~~~~~~~~// Event Listeners //~~~~~~~~~~//
