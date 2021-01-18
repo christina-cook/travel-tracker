@@ -30,7 +30,7 @@ const checkLoginInputs = () => {
   if (usernameInput.value.includes('traveler') && passwordInput.value.includes('travel2020')) {
     loadPage(+userID);
   } else {
-    window.alert('Please enter a valid username and password')
+    window.alert('Please enter a valid username and password');
   }
 }
 
@@ -89,8 +89,21 @@ const displayDashboard = () => {
 
 const addNewTrip = () => {
   event.preventDefault();
-  postNewTrip();
+  checkFormInputs();
+  // postNewTrip();
   console.log('currentTraveler trips', currentTraveler.trips);
+}
+
+const checkFormInputs = () => {
+  const destination = document.getElementById('trip-destination').value;
+  const departureDate = document.getElementById('departure-date').value.replace(/-/g, '/');
+  const tripDuration = document.getElementById('trip-duration').value;
+  const totalTravelers = document.getElementById('total-travelers').value;
+  if (destination && departureDate && tripDuration && totalTravelers) {
+    postNewTrip();
+  } else {
+    window.alert('Please fill out entire form');
+  }
 }
 
 const postNewTrip = () => {
