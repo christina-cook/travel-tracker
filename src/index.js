@@ -67,7 +67,7 @@ const postNewTrip = (newTripInfo) => {
 }
 
 const formatNewTripForPost = () => {
-  const destination = document.querySelector('.destination-dropdown-value').value;
+  const destination = document.querySelector('.destination-select').value;
   const departureDate = document.querySelector('.departure-date').value;
   const tripDuration = document.querySelector('.trip-duration').value;
   const totalTravelers = document.querySelector('.total-travelers').value;
@@ -75,6 +75,9 @@ const formatNewTripForPost = () => {
   console.log('departureDate', departureDate)
   console.log('tripDuration', tripDuration)
   console.log('totalTravelers', totalTravelers)
+  // const newTripInfo = {
+  //   id:
+  // }
 }
 
 //~~~~~~~~~~// Event Listeners //~~~~~~~~~~//
