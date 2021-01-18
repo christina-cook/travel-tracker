@@ -64,6 +64,11 @@ const domUpdates = {
   clearDashboard() {
     const tripDisplay = document.querySelector('.trip-display');
     tripDisplay.innerHTML = '';
+  },
+
+  clearForm() {
+    const bookingForm = document.querySelector('.booking-form');
+    bookingForm.reset();
   }
 }
 

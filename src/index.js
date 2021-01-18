@@ -62,6 +62,7 @@ const createDatasets = (travelerData, tripData, destinationData, singleTraveler)
   // generateRandomTraveler(travelers);
   // createTraveler(travelers[8]);
   displayDashboard();
+  domUpdates.clearForm();
 };
 
 const displayDashboard = () => {
@@ -93,7 +94,6 @@ const addNewTrip = () => {
   checkFormInputs();
   domUpdates.clearDashboard();
   loadPage(currentTraveler.travelerID);
-  //clearForm();
 }
 
 const checkFormInputs = () => {
@@ -103,7 +103,6 @@ const checkFormInputs = () => {
   const totalTravelers = document.getElementById('total-travelers');
   if (destination.value && departureDate.value && tripDuration.value && totalTravelers.value) {
     postNewTrip();
-    // console.log('Here are the current trips', currentTraveler.trips)
   } else {
     window.alert('Please fill out entire form');
   }
