@@ -52,6 +52,25 @@ h1 {
   font-size: 3vmin;
 }
 
+//~~~~~~~~~~// Login //~~~~~~~~~~//
+
+.login-container {
+  border: solid 4px $lightBlue;
+  border-radius: 20px;
+  padding: 3%;
+  margin: 10% auto 10% auto;
+  text-align: center;
+  width: 300px;
+}
+
+.login-title {
+  margin-top: 0%;
+}
+
+.login-button {
+  @extend .button;
+}
+
 //~~~~~~~~~~// Top Section //~~~~~~~~~~//
 
 .top-section {
@@ -102,12 +121,7 @@ h1 {
 }
 
 .form-button {
-  font-family: 'Quicksand', sans-serif;
-  border-radius: 10px;
-  &:hover {
-    background-color: $lightBlue;
-    cursor: pointer;
-  }
+  @extend .button
 }
 
 .form-button-container {

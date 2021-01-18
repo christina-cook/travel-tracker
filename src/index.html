@@ -14,33 +14,47 @@
       </div>
       <div class="welcome">
         <p class="welcome-message"></p>
-        <img class="user-avatar" src="./images/stewardess.png" alt="user avatar" height="50px" width="50px">
+        <img class="user-avatar hidden" src="./images/stewardess.png" alt="user avatar" height="50px" width="50px">
       </div>
     </header>
-    <section class="login-page hidden">
+    <section class="login-page">
+      <div class="login-container">
+        <form class="login-form">
+          <h2 class="login-title">Login</h2>
+          <p>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+          </p>
+          <p>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" minlength="10" maxlength="10" required>
+          </p>
+            <input type="submit" value="Sign In" class="login-button">
+        </form>
+      </div>
     </section>
-    <main class="main-dashboard">
+    <main class="main-dashboard hidden">
       <section class="top-section">
         <aside class="form-container">
           <form class="booking-form">
             <h2 class="form-title">Book Your Next Trip</h2>
             <p>
               <label for="trip-destination">Destination:</label>
-              <select id="trip-destination" name="travel-location" class="dropdown">
+              <select id="trip-destination" name="travel-location" class="dropdown" required>
                 <option value="" disabled selected hidden>Choose a destination</option>
               </select>
             </p>
             <p>
               <label for="departure-date">Departure Date:</label>
-              <input type="date" id="departure-date" name="departure-date">
+              <input type="date" id="departure-date" name="departure-date" required>
             </p>
             <p>
               <label for="trip-duration">Trip Duration (days):</label>
-              <input type="number" id="trip-duration" min="1" placeholder="Choose a number">
+              <input type="number" id="trip-duration" min="1" placeholder="Enter a number" required>
             </p>
             <p>
               <label for="total-travelers">Number of Travelers:</label>
-              <input type="number" id="total-travelers" min="1" placeholder="Choose a number">
+              <input type="number" id="total-travelers" min="1" placeholder="Enter a number" required>
             </p>
             <div class="form-button-container">
               <button class="form-button estimate-cost">Estimate Cost</button>
@@ -65,6 +79,5 @@
         </section>
       </section>
     </main>
-    <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   </body>
 </html>

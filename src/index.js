@@ -16,31 +16,59 @@ let travelers, trips, destinations, currentTraveler, newTripInfo;
 
 const estimateCostButton = document.querySelector('.estimate-cost');
 const bookTripButton = document.querySelector('.book-trip');
+const loginButton = document.querySelector('.login-button');
+const loginPage = document.querySelector('.login-page');
+const mainDashboard = document.querySelector('.main-dashboard');
+const destination = document.getElementById('trip-destination');
+const departureDate = document.getElementById('departure-date');
+const tripDuration = document.getElementById('trip-duration');
+const totalTravelers = document.getElementById('total-travelers');
 
 //~~~~~~~~~~// Event Handlers //~~~~~~~~~~//
 
-const onStartup = () => {
-  getAllData();
+const checkLoginInputs = () => {
+  event.preventDefault();
+  const usernameInput = document.getElementById('username');
+  const passwordInput = document.getElementById('password');
+  const userID = usernameInput.value.split('').splice(8, 2).join('');
+  if (usernameInput.value.includes('traveler') && passwordInput.value.includes('travel2020')) {
+    loadPage(+userID);
+  } else {
+    window.alert('Please enter a valid username and password');
+  }
+}
+
+const loadPage = (userID) => {
+  getAllData(userID);
 };
 
-const getAllData = () => {
+const getAllData = (userID) => {
   let getTravelerData = fetch('http://localhost:3001/api/v1/travelers')
-    .then(response => response.json());
+    .then(response => response.json())
   let getTripData = fetch('http://localhost:3001/api/v1/trips')
     .then(response => response.json());
   let getDestinationData = fetch('http://localhost:3001/api/v1/destinations')
     .then(response => response.json());
+  let getSingleTraveler = fetch(`http://localhost:3001/api/v1/travelers/${userID}`)
+    .then(response => response.json());
 
-  Promise.all([getTravelerData, getTripData, getDestinationData])
-    .then(data => displayDashboard(data[0], data[1], data[2]));
+  Promise.all([getTravelerData, getTripData, getDestinationData, getSingleTraveler])
+    .then(data => createDatasets(data[0], data[1], data[2], data[3]))
+    .catch(error => window.alert('Oops! Something went wrong.'))
 };
 
-const displayDashboard = (travelerData, tripData, destinationData) => {
+const createDatasets = (travelerData, tripData, destinationData, singleTraveler) => {
   travelers = travelerData.travelers;
   trips = tripData.trips;
   destinations = destinationData.destinations;
-  // generateRandomTraveler(travelers);
-  createTraveler(travelers[8])
+  currentTraveler = new Traveler(singleTraveler);
+  displayDashboard();
+  domUpdates.clearForm();
+};
+
+const displayDashboard = () => {
+  loginPage.classList.add('hidden');
+  mainDashboard.classList.remove('hidden');
   domUpdates.displayWelcomeMessage(currentTraveler);
   domUpdates.generateDestinationDropdown(destinations);
   currentTraveler.addTripsForCurrentTraveler(trips, destinations);
@@ -48,22 +76,23 @@ const displayDashboard = (travelerData, tripData, destinationData) => {
   domUpdates.displayYearlyTotal(currentTraveler);
 };
 
-// const generateRandomTraveler = (travelerData) => {
-//   let userID = Math.floor(Math.random() * travelerData.length);
-//   let dataForRandomTraveler = travelerData.find(traveler => {
-//     return traveler.id === userID;
-//   })
-//   currentTraveler = new Traveler(dataForRandomTraveler);
-//   return currentTraveler;
-// };
-
-const createTraveler = (travelerData) => {
-  currentTraveler = new Traveler(travelerData);
-  return currentTraveler;
-
+const addNewTrip = () => {
+  event.preventDefault();
+  checkFormInputs();
+  domUpdates.clearDashboard();
+  loadPage(currentTraveler.travelerID);
+  domUpdates.updateTripCostMessage();
 }
 
-const updateTrips = () => {
+const checkFormInputs = () => {
+  if (destination.value && departureDate.value && tripDuration.value && totalTravelers.value) {
+    postNewTrip();
+  } else {
+    window.alert('Please fill out entire form');
+  }
+}
+
+const postNewTrip = () => {
   const newTrip = formatNewTrip();
   return fetch('http://localhost:3001/api/v1/trips', {
     method: 'POST',
@@ -73,21 +102,21 @@ const updateTrips = () => {
     body: JSON.stringify(newTrip)
   })
     .then(response => response.json())
-    .catch(err => console.error(err))
+    .catch(error => window.alert('Oops! Something went wrong.'))
 }
 
 const formatNewTrip = () => {
-  const destination = document.getElementById('trip-destination').value;
-  const departureDate = document.getElementById('departure-date').value.replace(/-/g, '/');
-  const tripDuration = document.getElementById('trip-duration').value;
-  const totalTravelers = document.getElementById('total-travelers').value;
+  const destinatioValue = document.getElementById('trip-destination').value;
+  const departureDateValue = document.getElementById('departure-date').value.replace(/-/g, '/');
+  const tripDurationValue = document.getElementById('trip-duration').value;
+  const totalTravelersValue = document.getElementById('total-travelers').value;
   newTripInfo = {
     id: getRandomTripID(),
     userID: currentTraveler.travelerID,
-    destinationID: findDestinationID(destination).id,
-    travelers: totalTravelers,
-    date: departureDate,
-    duration: tripDuration,
+    destinationID: findDestinationID(destinatioValue).id,
+    travelers: totalTravelersValue,
+    date: departureDateValue,
+    duration: tripDurationValue,
     status: 'pending',
     suggestedActivities: [],
   }
@@ -108,16 +137,20 @@ const findDestinationID = (selectedDestination) => {
 }
 
 const estimateNewTripCost = () => {
-  formatNewTrip();
-  const destinationForNewTrip = destinations.find(destination => newTripInfo.destinationID === destination.id);
-  const newTrip = new Trip(newTripInfo, destinationForNewTrip);
-  const estimatedTripCost = newTrip.calculateTripCost();
-  const tripLocation = newTrip.destinationInfo.destination;
-  domUpdates.displayEstimatedTripCost(estimatedTripCost, tripLocation);
+  if (destination.value && departureDate.value && tripDuration.value && totalTravelers.value) {
+    formatNewTrip();
+    const destinationForNewTrip = destinations.find(destination => newTripInfo.destinationID === destination.id);
+    const newTrip = new Trip(newTripInfo, destinationForNewTrip);
+    const estimatedTripCost = newTrip.calculateTripCost();
+    const tripLocation = newTrip.destinationInfo.destination;
+    domUpdates.displayEstimatedTripCost(estimatedTripCost, tripLocation);
+  } else {
+    window.alert('Please fill out entire form');
+  }
 }
 
 //~~~~~~~~~~// Event Listeners //~~~~~~~~~~//
 
-window.addEventListener('load', onStartup);
 estimateCostButton.addEventListener('click', estimateNewTripCost);
-bookTripButton.addEventListener('click', updateTrips);
+bookTripButton.addEventListener('click', addNewTrip);
+loginButton.addEventListener('click', checkLoginInputs);

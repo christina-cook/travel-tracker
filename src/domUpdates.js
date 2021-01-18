@@ -3,8 +3,10 @@ const domUpdates = {
     const welcomeMessage = document.querySelector('.welcome-message');
     const name = user.travelerName.split(' ')[0];
     const userTrips = document.querySelector('.user-trips');
+    const userAvatar = document.querySelector('.user-avatar');
     welcomeMessage.innerText = `Welcome, ${name}!`;
-    userTrips.innerText = `${name}'s Trips:`
+    userAvatar.classList.remove('hidden');
+    userTrips.innerText = `${name}'s Trips:`;
   },
 
   generateDestinationDropdown(destinationData) {
@@ -42,7 +44,7 @@ const domUpdates = {
         <p class="card-text trip-status">Status: ${trip.status.charAt(0).toUpperCase() +
        trip.status.slice(1)}</p>
       </div>
-      `
+      `;
     });
   },
 
@@ -56,8 +58,24 @@ const domUpdates = {
   displayEstimatedTripCost(estimatedCost, location) {
     event.preventDefault();
     const estimatedCostText = document.querySelector('.estimated-cost');
-    estimatedCostText.innerText = `The estimated cost for your trip to ${location} is $${estimatedCost}.`
+    estimatedCostText.innerText = `The estimated cost for your trip to ${location} is $${estimatedCost}.`;
+  },
+
+  clearDashboard() {
+    const tripDisplay = document.querySelector('.trip-display');
+    tripDisplay.innerHTML = '';
+  },
+
+  clearForm() {
+    const bookingForm = document.querySelector('.booking-form');
+    bookingForm.reset();
+  },
+
+  updateTripCostMessage() {
+    const estimatedCostText = document.querySelector('.estimated-cost');
+    estimatedCostText.innerText = `Fill out the form to book your next trip.`;
   }
+
 }
 
 export default domUpdates;
