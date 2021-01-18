@@ -10,7 +10,7 @@ import domUpdates from './domUpdates';
 
 //~~~~~~~~~~// Global Variables //~~~~~~~~~~//
 
-let travelers, trips, destinations, currentTraveler;
+let travelers, trips, destinations, currentTraveler, newTripInfo;
 const estimateCostButton = document.querySelector('.estimate-cost');
 const bookTripButton = document.querySelector('.book-trip');
 
@@ -53,33 +53,22 @@ const generateRandomTraveler = (travelerData) => {
   return currentTraveler;
 };
 
-const postNewTrip = (newTripInfo) => {
-  console.log('You added a new trip!');
-  fetch('http://localhost:3001/api/v1/trips', {
-    method: 'POST',
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(newTripInfo)
-  })
-    .then(response => response.json())
-    .catch(err => console.error(err))
-}
 
-const formatNewTripForPost = () => {
+const formatNewTrip = () => {
   const destination = document.getElementById('trip-destination').value;
   const departureDate = document.getElementById('departure-date').value.replace(/-/g, '/');
   const tripDuration = document.getElementById('trip-duration').value;
   const totalTravelers = document.getElementById('total-travelers').value;
-  const newTripInfo = {
-    tripID: getRandomTripID(),
+  console.log('destination', destination)
+  newTripInfo = {
+    id: getRandomTripID(),
     userID: currentTraveler.travelerID,
-    numberOfTravelers: totalTravelers,
-    departureDate: departureDate,
-    tripDuration: tripDuration,
+    destinationID: findDestinationID(destination).id,
+    travelers: totalTravelers,
+    date: departureDate,
+    duration: tripDuration,
     status: 'pending',
     suggestedActivities: [],
-    destinationInfo: findDestinationByName(destination)
   }
   console.log('newTripInfo', newTripInfo)
   return newTripInfo;
@@ -89,14 +78,41 @@ const getRandomTripID = () => {
   return Math.floor(Math.random() * (900 - 201) + 201);
 }
 
-const findDestinationByName = (selectedDestination) => {
-  const destinationForNewTrip = destinations.find(destination => {
+const findDestinationID = (selectedDestination) => {
+  const newTripDestinationID = destinations.find(destination => {
     if (destination.destination.includes(selectedDestination)) {
-      return destination;
+      return destination.id;
     }
   });
-  console.log('destinationForNewTrip', destinationForNewTrip)
-  return destinationForNewTrip;
+  console.log('newTripDestinationID', newTripDestinationID)
+  return newTripDestinationID;
+}
+
+// const postNewTrip = (formattedBody) => {
+//   fetch('http://localhost:3001/api/v1/trips', {
+//     method: 'POST',
+//     headers: {
+//       "Content-Type": "application/json"
+//     },
+//     body: JSON.stringify(formattedBody)
+//   })
+//     .then(response => response.json())
+//     .catch(err => console.error(err))
+//   console.log(currentTraveler.trips);
+//   // updateTrips();
+// }
+
+const updateTrips = () => {
+  const newTrip = formatNewTrip();
+  return fetch('http://localhost:3001/api/v1/trips', {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(newTrip)
+  })
+    .then(response => response.json())
+    .catch(err => console.error(err))
 }
 
 //~~~~~~~~~~// Event Listeners //~~~~~~~~~~//
@@ -105,4 +121,4 @@ window.addEventListener('load', onStartup);
 estimateCostButton.addEventListener('click', function() {
   domUpdates.displayTripCost();
 });
-bookTripButton.addEventListener('click', formatNewTripForPost);
+bookTripButton.addEventListener('click', formatNewTrip);
