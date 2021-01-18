@@ -58,9 +58,6 @@ const createDatasets = (travelerData, tripData, destinationData, singleTraveler)
   trips = tripData.trips;
   destinations = destinationData.destinations;
   currentTraveler = new Traveler(singleTraveler);
-  console.log('currentTraveler', currentTraveler)
-  // generateRandomTraveler(travelers);
-  // createTraveler(travelers[8]);
   displayDashboard();
   domUpdates.clearForm();
 };
@@ -74,20 +71,6 @@ const displayDashboard = () => {
   domUpdates.displayTrips(currentTraveler.trips, destinations);
   domUpdates.displayYearlyTotal(currentTraveler);
 };
-
-// const generateRandomTraveler = (travelerData) => {
-//   let userID = Math.floor(Math.random() * travelerData.length);
-//   let dataForRandomTraveler = travelerData.find(traveler => {
-//     return traveler.id === userID;
-//   })
-//   currentTraveler = new Traveler(dataForRandomTraveler);
-//   return currentTraveler;
-// };
-
-// const createTraveler = (travelerData) => {
-//   currentTraveler = new Traveler(travelerData);
-//   return currentTraveler;
-// }
 
 const addNewTrip = () => {
   event.preventDefault();
@@ -164,7 +147,6 @@ const estimateNewTripCost = () => {
 
 //~~~~~~~~~~// Event Listeners //~~~~~~~~~~//
 
-// window.addEventListener('load', loadPage);
 estimateCostButton.addEventListener('click', estimateNewTripCost);
 bookTripButton.addEventListener('click', addNewTrip);
 loginButton.addEventListener('click', checkLoginInputs);
