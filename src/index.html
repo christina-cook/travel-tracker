@@ -25,24 +25,20 @@
             <h2 class="form-title">Book Your Next Trip</h2>
             <p>
               <label for="destination">Destination:</label>
-              <br>
-                <select id="destination" name="travel-location" class="dropdown">
+              <select id="destination" name="travel-location" class="dropdown">
                 <option value="" disabled selected hidden>Choose a destination</option>
               </select>
             </p>
             <p>
               <label for="depature-date">Departure Date:</label>
-              <br>
               <input type="date" id="depature-date" name="departure-date">
             </p>
             <p>
               <label for="duration">Trip Duration (days):</label>
-              <br>
               <input type="number" id="duration" min="1" class="trip-duration" placeholder="Choose a number">
             </p>
             <p>
               <label for="travelers-number">Number of Travelers:</label>
-              <br>
               <input type="number" id="travelers-number" min="1" class="trip-duration" placeholder="Choose a number">
             </p>
             <div class="form-buttons">
@@ -52,9 +48,14 @@
           </form>
           <div class="estimated-cost-message"></div>
         </aside>
-        <div class="travel-cost">
-          <p class="annual-message">You've spent $0 on travel this year.</p>
-        </div>
+        <section class="travel-cost">
+          <div class="annual-message-display">
+            <p class="annual-message">You've spent $0 on travel this year.</p>
+          </div>
+          <div class="estimated-cost-display">
+            <p class="estimated-cost">The estimated cost for this trip is:</p>
+          </div>
+        </section>
       </section>
       <section class="trip-section">
         <section class="all-trips">

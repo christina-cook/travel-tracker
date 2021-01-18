@@ -69,13 +69,27 @@ header {
 }
 
 .travel-cost {
+  width: 50%;
+  height: 100%;
+}
+
+.annual-message-display {
   margin: 2%;
   border: solid $yellow;
-  width: 50%;
   height: 50%;
 }
 
 .annual-message {
+  text-align: center;
+}
+
+.estimated-cost-display {
+  margin: 2%;
+  border: dotted $pink;
+  height: 50%;
+}
+
+.estimated-cost {
   text-align: center;
 }
 
@@ -84,7 +98,6 @@ header {
 aside {
   width: 50%;
   margin-left: 2%;
-  margin-right: 2%;
 }
 
 .booking-form {
@@ -119,7 +132,7 @@ button {
 
 .book-trip {
   &:hover {
-    background-color: $darkBlue;
+    background-color: $yellow;
   }
 }
 
@@ -160,8 +173,6 @@ button {
   border-width: 4px;
   border-radius: 10px;
   padding: 2%;
-  // width: %;
-  // align-items: center;
 }
 
 .trip-destination {
