@@ -121,4 +121,4 @@ window.addEventListener('load', onStartup);
 estimateCostButton.addEventListener('click', function() {
   domUpdates.displayTripCost();
 });
-bookTripButton.addEventListener('click', formatNewTrip);
+bookTripButton.addEventListener('click', updateTrips);
