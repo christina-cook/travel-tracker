@@ -118,26 +118,18 @@ aside {
   text-align: center;
 }
 
-button {
+.form-button {
   font-family: 'Quicksand', sans-serif;
-  border-radius: 10px
+  border-radius: 10px;
+  &:hover {
+    background-color: $lightBlue;
+    cursor: pointer;
+  }
 }
 
-.form-buttons {
+.form-button-container {
   display: flex;
   justify-content: space-evenly;
-}
-
-.estimate-cost {
-  &:hover {
-    background-color: $yellow;
-  }
-}
-
-.book-trip {
-  &:hover {
-    background-color: $yellow;
-  }
 }
 
 // TRAVEL SECTION
