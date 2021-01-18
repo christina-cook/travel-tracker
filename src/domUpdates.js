@@ -47,14 +47,16 @@ const domUpdates = {
   },
 
   displayYearlyTotal(currentTraveler) {
-    currentTraveler.addTripsForCurrentYear('2020');
+    currentTraveler.addTripsForCurrentYear('2021');
     const yearlyCost = document.querySelector('.annual-message');
     const cost = currentTraveler.calculateYearlyTotal();
     yearlyCost.innerText = `You've spent $${cost} on travel this year.`;
   },
 
-  displayTripCost() {
-    console.log('I will show you how much this trip will cost')
+  displayEstimatedTripCost(estimatedCost, location) {
+    event.preventDefault();
+    const estimatedCostText = document.querySelector('.estimated-cost');
+    estimatedCostText.innerText = `The estimated cost for your trip to ${location} is $${estimatedCost}.`
   }
 }
 

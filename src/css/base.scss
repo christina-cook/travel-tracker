@@ -1,12 +1,10 @@
-/* This is an example of using Sass, otherwise plain CSS works too*/
-// $primary-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
-// ;
-//
-// body {
-//   background: $primary-background;
-// }
+
+//~~~~~~~~~~// Imports //~~~~~~~~~~//
 
 @import './variables';
+@import './extensions';
+
+//~~~~~~~~~~// General //~~~~~~~~~~//
 
 body {
   background: $lightGray;
@@ -14,13 +12,12 @@ body {
   font-family: 'Quicksand', sans-serif;
 }
 
-// MAIN
-
 .main-dashboard {
   width: 100%;
+  height: 100%;
 }
 
-// HEADER
+//~~~~~~~~~~// Header //~~~~~~~~~~//
 
 header {
   background: $lightBlue;
@@ -32,27 +29,21 @@ header {
 }
 
 .logo {
-  display: flex;
-  align-items: center;
-  align-self: flex-end;
-  width: 50%;
+  @extend .header-display;
 }
 
 .app-logo {
   margin-right: 2%;
 }
 
-.app-name {
+h1 {
   font-size: 8vmin;
   margin: 0;
   align-self: flex-end;
 }
 
 .welcome {
-  display: flex;
-  align-items: center;
-  align-self: flex-end;
-  width: 50%;
+  @extend .header-display;
   justify-content: flex-end;
 }
 
@@ -61,7 +52,7 @@ header {
   font-size: 3vmin;
 }
 
-// TOP SECTION
+//~~~~~~~~~~// Top Section //~~~~~~~~~~//
 
 .top-section {
   display: flex;
@@ -71,43 +62,35 @@ header {
 .travel-cost {
   width: 50%;
   padding: 2%;
-
 }
 
 .annual-message-display {
-  margin: 2%;
   border: solid $yellow;
-  border-radius: 20px;
-  height: 45%;
+  @extend .top-section-border;
   margin-bottom: 4%;
 }
 
-.annual-message {
+.annual-message,
+.estimated-cost {
   text-align: center;
+  font-size: 2.5vmin;
+  padding: 2%;
 }
 
 .estimated-cost-display {
-  margin: 2%;
   border: dotted $pink;
-  height: 45%;
-  border-radius: 20px;
+  @extend .top-section-border;
 }
 
-.estimated-cost {
-  text-align: center;
-}
+//~~~~~~~~~~// Form //~~~~~~~~~~//
 
-// FORM
-
-aside {
+.form-container {
   width: 50%;
   margin-left: 2%;
 }
 
 .booking-form {
-  border: solid;
-  border-width: 4px;
-  border-color: $lightBlue;
+  border: solid 4px $lightBlue;
   border-radius: 20px;
   padding: 4%;
   display: flex;
@@ -132,7 +115,7 @@ aside {
   justify-content: space-evenly;
 }
 
-// TRAVEL SECTION
+//~~~~~~~~~~// Travel Section //~~~~~~~~~~//
 
 
 .trip-section {
@@ -146,15 +129,12 @@ aside {
 }
 
 .all-trips {
-  display: flex;
   flex-direction: column;
   width: 98%;
-  margin-right: 2%;
-  margin-left: 2%;
-  margin-bottom: 2%;
-}
+  margin: 0% 2% 2% 4%;
+  }
 
-// TRIP CARDS
+//~~~~~~~~~~// Trip Cards //~~~~~~~~~~//
 
 .trip-display {
   display: grid;
@@ -164,19 +144,106 @@ aside {
 
 .trip-card {
   background-color: $lightBlue;
-  border: solid;
-  border-color: $darkBlue;
-  border-width: 4px;
+  border: solid 4px $darkBlue;
   border-radius: 10px;
   padding: 2%;
   max-width: 300px;
   max-height: 400px;
 }
 
-.trip-destination {
+.trip-destination,
+.card-text {
   text-align: center;
 }
 
-.card-text {
-  text-align: center;
+//~~~~~~~~~~// Hidden //~~~~~~~~~~//
+
+.hidden {
+  display: none!important;
+}
+
+//~~~~~~~~~~// Media Queries //~~~~~~~~~~//
+
+@media (max-width: 1300px) {
+  .trip-display {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1.5% 1.5%;
+  }
+
+  .app-logo {
+    width: 90px;
+    height: 90px;
+  }
+
+  h1 {
+    font-size: 6.5vmin;
+  }
+
+  .welcome-message {
+    font-size: 2.5vmin;
+  }
+
+  .user-avatar {
+    height: 40px;
+    width: 40px;
+  }
+}
+
+@media (max-width: 800px) {
+  .trip-display {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1.5% 1.5%;
+  }
+
+  .app-logo {
+    width: 75px;
+    height: 75px;
+  }
+
+  h1 {
+    font-size: 6vmin;
+  }
+
+  .welcome-message {
+    font-size: 2vmin;
+  }
+
+  .user-avatar {
+    height: 30px;
+    width: 30px;
+  }
+}
+
+@media (max-width: 550px) {
+  .trip-display {
+    grid-template-columns: 1fr;
+    grid-gap: 0.5%;
+  }
+
+  .top-section {
+    flex-direction: column;
+  }
+
+  .form-container,
+  .travel-cost {
+    width: 96%;
+  }
+
+  .welcome {
+    visibility: hidden;
+  }
+
+  .logo {
+    width: 100%;
+  }
+
+  .app-logo {
+    width: 50px;
+    height: 50px;
+  }
+
+  .trip-image {
+    width: 240px;
+    height: 140px;
+  }
 }

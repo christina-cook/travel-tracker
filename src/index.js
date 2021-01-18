@@ -40,7 +40,7 @@ const displayDashboard = (travelerData, tripData, destinationData) => {
   trips = tripData.trips;
   destinations = destinationData.destinations;
   // generateRandomTraveler(travelers);
-  createTraveler(travelers[5])
+  createTraveler(travelers[8])
   domUpdates.displayWelcomeMessage(currentTraveler);
   domUpdates.generateDestinationDropdown(destinations);
   currentTraveler.addTripsForCurrentTraveler(trips, destinations);
@@ -107,10 +107,19 @@ const findDestinationID = (selectedDestination) => {
   return newTripDestinationID;
 }
 
+const estimateNewTripCost = () => {
+  formatNewTrip();
+  const destinationForNewTrip = destinations.find(destination => newTripInfo.destinationID === destination.id);
+  const newTrip = new Trip(newTripInfo, destinationForNewTrip);
+  const estimatedTripCost = newTrip.calculateTripCost();
+  const tripLocation = newTrip.destinationInfo.destination;
+  console.log('estimatedTripCost', estimatedTripCost)
+  console.log('tripLocation', tripLocation)
+  domUpdates.displayEstimatedTripCost(estimatedTripCost, tripLocation);
+}
+
 //~~~~~~~~~~// Event Listeners //~~~~~~~~~~//
 
 window.addEventListener('load', onStartup);
-estimateCostButton.addEventListener('click', function() {
-  domUpdates.displayTripCost();
-});
+estimateCostButton.addEventListener('click', estimateNewTripCost);
 bookTripButton.addEventListener('click', updateTrips);
