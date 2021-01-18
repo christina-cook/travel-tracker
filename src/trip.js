@@ -18,7 +18,6 @@ class Trip {
     const totalCost = hotelCost + flightCost;
     const agentFee = totalCost * .10;
     this.totalTripCost = totalCost + agentFee;
-    console.log('this.totalTripCost', this.totalTripCost)
     return this.totalTripCost;
   }
 
