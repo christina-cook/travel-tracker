@@ -85,6 +85,7 @@ const displayDashboard = (travelerData, tripData, destinationData, singleTravele
 // }
 
 const updateTrips = () => {
+  event.preventDefault();
   const newTrip = formatNewTrip();
   return fetch('http://localhost:3001/api/v1/trips', {
     method: 'POST',
