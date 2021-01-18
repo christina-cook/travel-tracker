@@ -16,10 +16,13 @@ let travelers, trips, destinations, currentTraveler, newTripInfo;
 
 const estimateCostButton = document.querySelector('.estimate-cost');
 const bookTripButton = document.querySelector('.book-trip');
+const loginButton = document.querySelector('.login-button');
+const loginPage = document.querySelector('.login-page');
+const mainDashboard = document.querySelector('.main-dashboard');
 
 //~~~~~~~~~~// Event Handlers //~~~~~~~~~~//
 
-const onStartup = () => {
+const loadPage = () => {
   getAllData();
 };
 
@@ -40,7 +43,9 @@ const displayDashboard = (travelerData, tripData, destinationData) => {
   trips = tripData.trips;
   destinations = destinationData.destinations;
   // generateRandomTraveler(travelers);
-  createTraveler(travelers[8])
+  createTraveler(travelers[8]);
+  loginPage.classList.add('hidden');
+  mainDashboard.classList.remove('hidden');
   domUpdates.displayWelcomeMessage(currentTraveler);
   domUpdates.generateDestinationDropdown(destinations);
   currentTraveler.addTripsForCurrentTraveler(trips, destinations);
@@ -118,6 +123,7 @@ const estimateNewTripCost = () => {
 
 //~~~~~~~~~~// Event Listeners //~~~~~~~~~~//
 
-window.addEventListener('load', onStartup);
+// window.addEventListener('load', loadPage);
 estimateCostButton.addEventListener('click', estimateNewTripCost);
 bookTripButton.addEventListener('click', updateTrips);
+loginButton.addEventListener('click', loadPage);
