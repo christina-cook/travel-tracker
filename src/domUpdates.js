@@ -3,7 +3,9 @@ const domUpdates = {
     const welcomeMessage = document.querySelector('.welcome-message');
     const name = user.travelerName.split(' ')[0];
     const userTrips = document.querySelector('.user-trips');
+    const userAvatar = document.querySelector('.user-avatar');
     welcomeMessage.innerText = `Welcome, ${name}!`;
+    userAvatar.classList.remove('hidden');
     userTrips.innerText = `${name}'s Trips:`
   },
 

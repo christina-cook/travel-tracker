@@ -22,6 +22,14 @@ const mainDashboard = document.querySelector('.main-dashboard');
 
 //~~~~~~~~~~// Event Handlers //~~~~~~~~~~//
 
+// const checkLoginInputs = () => {
+//   const usernameInput = document.querySelector('.username').value;
+//   const passwordInput = document.querySelector('.password').value;
+//   if (passwordInput === 'travel2020') {
+//     loadPage();
+//   }
+// }
+
 const loadPage = () => {
   getAllData();
 };
@@ -65,7 +73,6 @@ const displayDashboard = (travelerData, tripData, destinationData) => {
 const createTraveler = (travelerData) => {
   currentTraveler = new Traveler(travelerData);
   return currentTraveler;
-
 }
 
 const updateTrips = () => {
