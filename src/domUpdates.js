@@ -59,6 +59,11 @@ const domUpdates = {
     event.preventDefault();
     const estimatedCostText = document.querySelector('.estimated-cost');
     estimatedCostText.innerText = `The estimated cost for your trip to ${location} is $${estimatedCost}.`
+  },
+
+  clearDashboard() {
+    const tripDisplay = document.querySelector('.trip-display');
+    tripDisplay.innerHTML = '';
   }
 }
 

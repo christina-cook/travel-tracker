@@ -90,6 +90,8 @@ const displayDashboard = () => {
 const addNewTrip = () => {
   event.preventDefault();
   checkFormInputs();
+  domUpdates.clearDashboard();
+  loadPage(currentTraveler.travelerID);
   //clearForm();
 }
 
@@ -100,6 +102,7 @@ const checkFormInputs = () => {
   const totalTravelers = document.getElementById('total-travelers');
   if (destination.value && departureDate.value && tripDuration.value && totalTravelers.value) {
     postNewTrip();
+    // console.log('Here are the current trips', currentTraveler.trips)
   } else {
     window.alert('Please fill out entire form');
   }
