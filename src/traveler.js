@@ -26,9 +26,11 @@ class Traveler {
         return tripLocation;
       })
       this.trips.push(new Trip(trip, tripLocation));
-    })
+    });
     // console.log('this.trips', this.trips)
-    return this.trips;
+    return this.trips.sort((a, b) => {
+      return new Date(b.departureDate) - new Date(a.departureDate);
+    });
   }
 
   addTripsForCurrentYear(year) {
@@ -53,7 +55,7 @@ class Traveler {
   }
 
   // sortTrips() {
-  //   // sort trips into present, past, upcoming, pending
+  //   sort trips based on date and status
   // }
 
   // sortPending() {
