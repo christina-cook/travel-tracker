@@ -48,8 +48,8 @@ const domUpdates = {
     });
   },
 
-  displayYearlyTotal(currentTraveler) {
-    currentTraveler.addTripsForCurrentYear('2021');
+  displayYearlyTotal(currentTraveler, yearStart) {
+    currentTraveler.addTripsForCurrentYear(yearStart);
     const yearlyCost = document.querySelector('.annual-message');
     const cost = currentTraveler.calculateYearlyTotal();
     yearlyCost.innerText = `You've spent $${cost} on travel this year.`;

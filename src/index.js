@@ -14,6 +14,7 @@ import moment from 'moment';
 
 let travelers, trips, destinations, currentTraveler, newTripInfo;
 const today = moment().format('YYYY/MM/DD');
+const yearStart = moment().startOf('year').format('YYYY/MM/DD');
 
 //~~~~~~~~~~// Query Selectors //~~~~~~~~~~//
 
@@ -76,8 +77,9 @@ const displayDashboard = () => {
   domUpdates.generateDestinationDropdown(destinations);
   currentTraveler.addTripsForCurrentTraveler(trips, destinations);
   domUpdates.displayTrips(currentTraveler.trips, destinations);
-  domUpdates.displayYearlyTotal(currentTraveler);
+  domUpdates.displayYearlyTotal(currentTraveler, yearStart);
   console.log('moment today', today)
+  console.log('moment year start', yearStart)
 };
 
 const addNewTrip = () => {

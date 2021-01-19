@@ -34,9 +34,10 @@ class Traveler {
   }
 
   addTripsForCurrentYear(year) {
+    const currentYear = year.split('/')[0];
     this.trips.filter(trip => {
-      if (trip.departureDate.split('/')[0] === year) {
-        this.tripsThisYear.push(trip)
+      if (trip.departureDate.split('/')[0] === currentYear) {
+        this.tripsThisYear.push(trip);
       }
       return this.tripsThisYear;
     })
