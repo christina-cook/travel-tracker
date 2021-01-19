@@ -8,10 +8,6 @@ class Traveler {
     this.trips = [];
     this.tripsThisYear = [];
     this.totalSpentThisYear;
-    // this.pastTrips = [];
-    // this.presentTrips = [];
-    // this.upcomingTrips = [];
-    // this.pendingTrips = [];
   }
 
   addTripsForCurrentTraveler(tripData, destinationData, today) {
@@ -60,28 +56,6 @@ class Traveler {
     return this.totalSpentThisYear;
   }
 
-  // sortTrips() {
-  //   sort trips based on date and status
-  // }
-
-  // sortPending() {
-  //   // if the status of the trip is pending, push trip to pendingTrips
-  // }
-  //
-  // sortUpcoming() {
-  //   // if the departureDate is greater than the current date,
-  //   // push trip to upcomingTrips
-  // }
-  //
-  // sortPast() {
-  //   // if the end date is less than the current date,
-  //   // push trip to pastTrips
-  // }
-  //
-  // sortCurrent() {
-  //   // if the current date greater than the departureDate and less than
-  //   // the end date, push trip to currentTrips
-  // }
 }
 
 export default Traveler;

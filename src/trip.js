@@ -26,11 +26,8 @@ class Trip {
   }
 
   determineTripEndDate() {
-    console.log(this.departureDate)
     const tripStart = moment(this.departureDate).format('YYYY/MM/DD');
     this.tripEndDate = moment(tripStart).add(this.tripDuration, 'days').format('YYYY/MM/DD');
-    console.log('tripStart', tripStart);
-    console.log('tripEndDate', this.tripEndDate);
   }
 
   updateTripStatus(today) {
@@ -38,7 +35,7 @@ class Trip {
     const tripStart = moment(this.departureDate).format('YYYY/MM/DD');
     if (this.status === 'pending') {
       this.status = 'trip pending';
-    } else if (moment(tripStart).isAfter(today)) {
+    } else if (moment(tripStart).isAfter(today) && this.status === 'approved') {
       this.status = 'upcoming trip';
     } else if (moment(this.tripEndDate).isBefore(today)) {
       this.status = 'past trip';
