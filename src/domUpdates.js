@@ -41,8 +41,7 @@ const domUpdates = {
         <p class="card-text trip-date">Date: ${trip.departureDate}</p>
         <p class="card-text trip-duration">Duration: ${trip.tripDuration} days</p>
         <p class="card-text trip-participants">Travelers: ${trip.numberOfTravelers}</p>
-        <p class="card-text trip-status">Status: ${trip.status.charAt(0).toUpperCase() +
-       trip.status.slice(1)}</p>
+        <p class="card-text trip-status">Status: ${trip.status}</p>
       </div>
       `;
     });

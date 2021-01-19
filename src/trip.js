@@ -17,8 +17,6 @@ class Trip {
   }
 
   calculateTripCost() {
-    this.determineTripEndDate();
-/
     const hotelCost = this.destinationInfo.estimatedLodgingCostPerDay * this.tripDuration;
     const flightCost = this.destinationInfo.estimatedFlightCostPerPerson * this.numberOfTravelers;
     const totalCost = hotelCost + flightCost;
@@ -35,6 +33,19 @@ class Trip {
     console.log('tripEndDate', this.tripEndDate);
   }
 
+  updateTripStatus(today) {
+    this.determineTripEndDate();
+    const tripStart = moment(this.departureDate).format('YYYY/MM/DD');
+    if (this.status === 'pending') {
+      this.status = 'trip pending';
+    } else if (moment(tripStart).isAfter(today)) {
+      this.status = 'upcoming trip';
+    } else if (moment(this.tripEndDate).isBefore(today)) {
+      this.status = 'past trip';
+    } else if (moment(tripStart).isBefore(today) && moment(this.tripEndDate).isAfter(today)) {
+      this.status = 'current trip';
+    }
+  }
 
 }
 
