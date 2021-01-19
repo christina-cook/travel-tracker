@@ -106,7 +106,7 @@ const postNewTrip = () => {
     body: JSON.stringify(newTrip)
   })
     .then(response => response.json())
-    .catch(error => window.alert('Oops! Something went wrong.'))
+    .catch(error => window.alert('Oops! Something went wrong. Please try again.'))
 }
 
 const formatNewTrip = () => {

@@ -71,7 +71,6 @@ const domUpdates = {
   },
 
   updateTripCostMessage() {
-    window.alert('Your trip request has been received!');
     const estimatedCostText = document.querySelector('.estimated-cost');
     estimatedCostText.innerText = `Fill out the form to book your next trip.`;
   }
