@@ -7,10 +7,13 @@ import './images/stewardess.png'
 import Traveler from './traveler';
 import Trip from './trip';
 import domUpdates from './domUpdates';
+import moment from 'moment';
+
 
 //~~~~~~~~~~// Global Variables //~~~~~~~~~~//
 
 let travelers, trips, destinations, currentTraveler, newTripInfo;
+const today = moment().format('YYYY/MM/DD');
 
 //~~~~~~~~~~// Query Selectors //~~~~~~~~~~//
 
@@ -74,6 +77,7 @@ const displayDashboard = () => {
   currentTraveler.addTripsForCurrentTraveler(trips, destinations);
   domUpdates.displayTrips(currentTraveler.trips, destinations);
   domUpdates.displayYearlyTotal(currentTraveler);
+  console.log('moment today', today)
 };
 
 const addNewTrip = () => {
@@ -106,14 +110,14 @@ const postNewTrip = () => {
 }
 
 const formatNewTrip = () => {
-  const destinatioValue = document.getElementById('trip-destination').value;
+  const destinationValue = document.getElementById('trip-destination').value;
   const departureDateValue = document.getElementById('departure-date').value.replace(/-/g, '/');
   const tripDurationValue = document.getElementById('trip-duration').value;
   const totalTravelersValue = document.getElementById('total-travelers').value;
   newTripInfo = {
     id: getRandomTripID(),
     userID: currentTraveler.travelerID,
-    destinationID: findDestinationID(destinatioValue).id,
+    destinationID: findDestinationID(destinationValue).id,
     travelers: totalTravelersValue,
     date: departureDateValue,
     duration: tripDurationValue,
