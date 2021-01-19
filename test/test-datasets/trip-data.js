@@ -82,8 +82,8 @@ const tripData = [
     "status": "approved",
     "suggestedActivities": []
   }, {
-    "id": 3,
-    "userID": 9,
+    "id": 9,
+    "userID": 3,
     "destinationID": 50,
     "travelers": 6,
     "date": "2020/07/23",
@@ -91,8 +91,8 @@ const tripData = [
     "status": "approved",
     "suggestedActivities": []
   }, {
-    "id": 3,
-    "userID": 50,
+    "id": 50,
+    "userID": 3,
     "destinationID": 5,
     "travelers": 4,
     "date": "2020/10/14",
@@ -100,8 +100,8 @@ const tripData = [
     "status": "approved",
     "suggestedActivities": []
   }, {
-    "id": 3,
-    "userID": 33,
+    "id": 33,
+    "userID": 3,
     "destinationID": 33,
     "travelers": 6,
     "date": "2020/10/17",
@@ -109,8 +109,8 @@ const tripData = [
     "status": "approved",
     "suggestedActivities": []
   }, {
-    "id": 4,
-    "userID": 14,
+    "id": 14,
+    "userID": 4,
     "destinationID": 12,
     "travelers": 1,
     "date": "2021/02/12",
@@ -118,8 +118,8 @@ const tripData = [
     "status": "approved",
     "suggestedActivities": []
   }, {
-    "id": 4,
-    "userID": 19,
+    "id": 9,
+    "userID": 4,
     "destinationID": 35,
     "travelers": 1,
     "date": "2020/09/24",
@@ -127,8 +127,8 @@ const tripData = [
     "status": "approved",
     "suggestedActivities": []
   }, {
-    "id": 4,
-    "userID": 50,
+    "id": 50,
+    "userID": 4,
     "destinationID": 13,
     "travelers": 3,
     "date": "2020/07/04",
@@ -136,8 +136,8 @@ const tripData = [
     "status": "approved",
     "suggestedActivities": []
   }, {
-    "id": 4,
-    "userID": 19,
+    "id": 19,
+    "userID": 4,
     "destinationID": 27,
     "travelers": 1,
     "date": "2019/11/20",
