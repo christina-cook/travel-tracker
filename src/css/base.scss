@@ -84,6 +84,7 @@ h1 {
 
 .login-button {
   @extend .button;
+  width: 25%;
 }
 
 //~~~~~~~~~~// Top Section //~~~~~~~~~~//
@@ -136,7 +137,7 @@ h1 {
 }
 
 .form-button {
-  @extend .button
+  @extend .button;
 }
 
 .form-button-container {
@@ -183,6 +184,11 @@ h1 {
 .trip-destination,
 .card-text {
   text-align: center;
+}
+
+.trip-image {
+  height: 180px;
+  width: 98%;
 }
 
 //~~~~~~~~~~// Hidden //~~~~~~~~~~//
@@ -241,6 +247,10 @@ h1 {
     height: 30px;
     width: 30px;
   }
+
+  .logout-button {
+    width: 30%;
+  }
 }
 
 @media (max-width: 550px) {
@@ -267,12 +277,56 @@ h1 {
   }
 
   .app-logo {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
   }
 
-  .trip-image {
+  .header-right {
+    width: 60%;
+  }
+
+  .logout-button {
+    width: 45%;
+  }
+}
+
+@media (max-width: 350px) {
+  .trip-display {
+    grid-template-columns: 1fr;
+    grid-gap: 0.5%;
+  }
+
+  .top-section {
+    flex-direction: column;
+  }
+
+  .form-container,
+  .travel-cost {
+    width: 96%;
+  }
+
+  .welcome {
+    visibility: hidden;
+  }
+
+  .logo {
+    width: 100%;
+  }
+
+  .app-logo {
+    width: 30px;
+    height: 30px;
+  }
+
+  .header-right {
+    width: 60%;
+  }
+
+  .logout-button {
+    width: 55%;
+  }
+
+  .login-container {
     width: 240px;
-    height: 140px;
   }
 }
