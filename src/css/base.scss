@@ -42,12 +42,6 @@ h1 {
   align-self: flex-end;
 }
 
-.header-right {
-  display: flex;
-  flex-direction: column;
-  width: 30%;
-}
-
 .welcome {
   @extend .header-display;
   justify-content: flex-end;
@@ -58,13 +52,6 @@ h1 {
 .welcome-message {
   margin-right: 2%;
   font-size: 3vmin;
-}
-
-.logout-button {
-  @extend .button;
-  margin-right: 2%;
-  width: 20%;
-  align-self: flex-end;
 }
 
 //~~~~~~~~~~// Login //~~~~~~~~~~//
@@ -247,10 +234,6 @@ h1 {
     height: 30px;
     width: 30px;
   }
-
-  .logout-button {
-    width: 30%;
-  }
 }
 
 @media (max-width: 550px) {
@@ -280,14 +263,6 @@ h1 {
     width: 40px;
     height: 40px;
   }
-
-  .header-right {
-    width: 60%;
-  }
-
-  .logout-button {
-    width: 45%;
-  }
 }
 
 @media (max-width: 350px) {
@@ -316,14 +291,6 @@ h1 {
   .app-logo {
     width: 30px;
     height: 30px;
-  }
-
-  .header-right {
-    width: 60%;
-  }
-
-  .logout-button {
-    width: 55%;
   }
 
   .login-container {
