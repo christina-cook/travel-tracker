@@ -75,19 +75,10 @@ const displayDashboard = () => {
   mainDashboard.classList.remove('hidden');
   domUpdates.displayWelcomeMessage(currentTraveler);
   domUpdates.generateDestinationDropdown(destinations);
-  currentTraveler.addTripsForCurrentTraveler(trips, destinations);
-  updateTripStatusForAllTrips(today);
+  currentTraveler.addTripsForCurrentTraveler(trips, destinations, today);
   domUpdates.displayTrips(currentTraveler.trips, destinations);
   domUpdates.displayYearlyTotal(currentTraveler, yearStart);
-  console.log('moment today', today)
-  console.log('moment year start', yearStart)
 };
-
-const updateTripStatusForAllTrips = (today) => {
-  currentTraveler.trips.forEach(trip => {
-    trip.updateTripStatus(today)
-  })
-}
 
 const addNewTrip = () => {
   event.preventDefault();

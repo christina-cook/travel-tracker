@@ -14,7 +14,7 @@ class Traveler {
     // this.pendingTrips = [];
   }
 
-  addTripsForCurrentTraveler(tripData, destinationData) {
+  addTripsForCurrentTraveler(tripData, destinationData, today) {
     const currentUsersTrips = tripData.filter(trip => {
       return trip.userID === this.travelerID;
     })
@@ -28,9 +28,17 @@ class Traveler {
       })
       this.trips.push(new Trip(trip, tripLocation));
     });
+    this.verifyTripStatus(today);
     return this.trips.sort((a, b) => {
       return new Date(b.departureDate) - new Date(a.departureDate);
     });
+  }
+
+  verifyTripStatus(currentDate) {
+    this.trips.forEach(trip => {
+      trip.updateTripStatus(currentDate);
+    })
+    console.log('current trips', this.trips)
   }
 
   addTripsForCurrentYear(year) {
