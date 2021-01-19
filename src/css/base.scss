@@ -42,14 +42,29 @@ h1 {
   align-self: flex-end;
 }
 
+.header-right {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+
 .welcome {
   @extend .header-display;
   justify-content: flex-end;
+  width: 100%;
+  padding-top: 3%;
 }
 
 .welcome-message {
   margin-right: 2%;
   font-size: 3vmin;
+}
+
+.logout-button {
+  @extend .button;
+  margin-right: 2%;
+  width: 20%;
+  align-self: flex-end;
 }
 
 //~~~~~~~~~~// Login //~~~~~~~~~~//
