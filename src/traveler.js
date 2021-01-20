@@ -8,16 +8,12 @@ class Traveler {
     this.trips = [];
     this.tripsThisYear = [];
     this.totalSpentThisYear;
-    // this.pastTrips = [];
-    // this.presentTrips = [];
-    // this.upcomingTrips = [];
-    // this.pendingTrips = [];
   }
 
-  addTripsForCurrentTraveler(tripData, destinationData) {
+  addTripsForCurrentTraveler(tripData, destinationData, today) {
     const currentUsersTrips = tripData.filter(trip => {
       return trip.userID === this.travelerID;
-    })
+    });
     let tripLocation;
     currentUsersTrips.forEach(trip => {
       destinationData.forEach(destination => {
@@ -28,18 +24,26 @@ class Traveler {
       })
       this.trips.push(new Trip(trip, tripLocation));
     });
+    this.verifyTripStatus(today);
     return this.trips.sort((a, b) => {
       return new Date(b.departureDate) - new Date(a.departureDate);
     });
   }
 
+  verifyTripStatus(currentDate) {
+    this.trips.forEach(trip => {
+      trip.updateTripStatus(currentDate);
+    });
+  }
+
   addTripsForCurrentYear(year) {
+    const currentYear = year.split('/')[0];
     this.trips.filter(trip => {
-      if (trip.departureDate.split('/')[0] === year) {
-        this.tripsThisYear.push(trip)
+      if (trip.departureDate.split('/')[0] === currentYear) {
+        this.tripsThisYear.push(trip);
       }
       return this.tripsThisYear;
-    })
+    });
   }
 
   calculateYearlyTotal() {
@@ -50,29 +54,6 @@ class Traveler {
     this.totalSpentThisYear = +totalYearlyCost.toFixed(0);
     return this.totalSpentThisYear;
   }
-
-  // sortTrips() {
-  //   sort trips based on date and status
-  // }
-
-  // sortPending() {
-  //   // if the status of the trip is pending, push trip to pendingTrips
-  // }
-  //
-  // sortUpcoming() {
-  //   // if the departureDate is greater than the current date,
-  //   // push trip to upcomingTrips
-  // }
-  //
-  // sortPast() {
-  //   // if the end date is less than the current date,
-  //   // push trip to pastTrips
-  // }
-  //
-  // sortCurrent() {
-  //   // if the current date greater than the departureDate and less than
-  //   // the end date, push trip to currentTrips
-  // }
 }
 
 export default Traveler;

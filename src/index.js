@@ -7,10 +7,14 @@ import './images/stewardess.png'
 import Traveler from './traveler';
 import Trip from './trip';
 import domUpdates from './domUpdates';
+import moment from 'moment';
+
 
 //~~~~~~~~~~// Global Variables //~~~~~~~~~~//
 
 let travelers, trips, destinations, currentTraveler, newTripInfo;
+const today = moment().format('YYYY/MM/DD');
+const yearStart = moment().startOf('year').format('YYYY/MM/DD');
 
 //~~~~~~~~~~// Query Selectors //~~~~~~~~~~//
 
@@ -71,9 +75,9 @@ const displayDashboard = () => {
   mainDashboard.classList.remove('hidden');
   domUpdates.displayWelcomeMessage(currentTraveler);
   domUpdates.generateDestinationDropdown(destinations);
-  currentTraveler.addTripsForCurrentTraveler(trips, destinations);
+  currentTraveler.addTripsForCurrentTraveler(trips, destinations, today);
   domUpdates.displayTrips(currentTraveler.trips, destinations);
-  domUpdates.displayYearlyTotal(currentTraveler);
+  domUpdates.displayYearlyTotal(currentTraveler, yearStart);
 };
 
 const addNewTrip = () => {
@@ -102,18 +106,18 @@ const postNewTrip = () => {
     body: JSON.stringify(newTrip)
   })
     .then(response => response.json())
-    .catch(error => window.alert('Oops! Something went wrong.'))
+    .catch(error => window.alert('Oops! Something went wrong. Please try again.'))
 }
 
 const formatNewTrip = () => {
-  const destinatioValue = document.getElementById('trip-destination').value;
+  const destinationValue = document.getElementById('trip-destination').value;
   const departureDateValue = document.getElementById('departure-date').value.replace(/-/g, '/');
   const tripDurationValue = document.getElementById('trip-duration').value;
   const totalTravelersValue = document.getElementById('total-travelers').value;
   newTripInfo = {
     id: getRandomTripID(),
     userID: currentTraveler.travelerID,
-    destinationID: findDestinationID(destinatioValue).id,
+    destinationID: findDestinationID(destinationValue).id,
     travelers: totalTravelersValue,
     date: departureDateValue,
     duration: tripDurationValue,
@@ -139,7 +143,9 @@ const findDestinationID = (selectedDestination) => {
 const estimateNewTripCost = () => {
   if (destination.value && departureDate.value && tripDuration.value && totalTravelers.value) {
     formatNewTrip();
-    const destinationForNewTrip = destinations.find(destination => newTripInfo.destinationID === destination.id);
+    const destinationForNewTrip = destinations.find(destination => {
+      return newTripInfo.destinationID === destination.id;
+    });
     const newTrip = new Trip(newTripInfo, destinationForNewTrip);
     const estimatedTripCost = newTrip.calculateTripCost();
     const tripLocation = newTrip.destinationInfo.destination;

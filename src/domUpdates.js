@@ -37,19 +37,18 @@ const domUpdates = {
       tripDisplay.innerHTML += `
       <div class="trip-card">
         <h3 class="trip-destination">${trip.destinationInfo.destination}</h3>
-        <img class="trip-image" src=${trip.destinationInfo.image} alt=${trip.destinationInfo.alt} height="180px" width="280px">
+        <img class="trip-image" src=${trip.destinationInfo.image} alt=${trip.destinationInfo.alt}">
         <p class="card-text trip-date">Date: ${trip.departureDate}</p>
         <p class="card-text trip-duration">Duration: ${trip.tripDuration} days</p>
         <p class="card-text trip-participants">Travelers: ${trip.numberOfTravelers}</p>
-        <p class="card-text trip-status">Status: ${trip.status.charAt(0).toUpperCase() +
-       trip.status.slice(1)}</p>
+        <p class="card-text trip-status">Status: ${trip.status}</p>
       </div>
       `;
     });
   },
 
-  displayYearlyTotal(currentTraveler) {
-    currentTraveler.addTripsForCurrentYear('2021');
+  displayYearlyTotal(currentTraveler, yearStart) {
+    currentTraveler.addTripsForCurrentYear(yearStart);
     const yearlyCost = document.querySelector('.annual-message');
     const cost = currentTraveler.calculateYearlyTotal();
     yearlyCost.innerText = `You've spent $${cost} on travel this year.`;
@@ -75,7 +74,6 @@ const domUpdates = {
     const estimatedCostText = document.querySelector('.estimated-cost');
     estimatedCostText.innerText = `Fill out the form to book your next trip.`;
   }
-
 }
 
 export default domUpdates;

@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 class Trip {
   constructor(tripData, destination) {
     this.tripID = tripData.id;
@@ -6,6 +8,7 @@ class Trip {
     this.numberOfTravelers = tripData.travelers;
     this.departureDate = tripData.date;
     this.tripDuration = tripData.duration;
+    this.tripEndDate;
     this.status = tripData.status;
     this.suggestedActivities = tripData.suggestedActivities;
     this.destinationInfo = destination;
@@ -21,6 +24,24 @@ class Trip {
     return this.totalTripCost;
   }
 
+  determineTripEndDate() {
+    const tripStart = moment(this.departureDate).format('YYYY/MM/DD');
+    this.tripEndDate = moment(tripStart).add(this.tripDuration, 'days').format('YYYY/MM/DD');
+  }
+
+  updateTripStatus(today) {
+    this.determineTripEndDate();
+    const tripStart = moment(this.departureDate).format('YYYY/MM/DD');
+    if (moment(this.tripEndDate).isBefore(today)) {
+      this.status = 'past trip';
+    } else if (moment(tripStart).isAfter(today) && this.status === 'approved') {
+      this.status = 'upcoming trip';
+    } else if (moment(tripStart).isBefore(today) && moment(this.tripEndDate).isAfter(today)) {
+      this.status = 'current trip';
+    } else if (this.status === 'pending') {
+      this.status = 'trip pending';
+    }
+  }
 }
 
 export default Trip;
