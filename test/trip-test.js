@@ -70,4 +70,14 @@ describe('Trip class and methods', () => {
     trip4.calculateTripCost();
     expect(trip4.totalTripCost).to.equal(2596);
   });
+
+  it('Should be able to determine the end date of a trip', () => {
+    trip4.determineTripEndDate();
+    expect(trip4.tripEndDate).to.equal('2020/03/06');
+  });
+
+  it('Should be able to update the status of a trip', () => {
+    trip4.updateTripStatus();
+    expect(trip4.status).to.equal('past trip');
+  });
 });

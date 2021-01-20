@@ -43,7 +43,7 @@ class Traveler {
         this.tripsThisYear.push(trip);
       }
       return this.tripsThisYear;
-    })
+    });
   }
 
   calculateYearlyTotal() {
