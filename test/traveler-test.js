@@ -5,10 +5,14 @@ import Traveler from '../src/traveler';
 import travelerData from './test-datasets/traveler-data';
 import tripData from './test-datasets/trip-data';
 import destinationData from './test-datasets/destination-data';
+import moment from 'moment';
 
 describe('Traveler class and methods', () => {
 
   let traveler1, traveler2;
+  let currentDate = moment().format('YYYY/MM/DD');
+  let yearStart = moment().startOf('year').format('YYYY/MM/DD');
+
 
   beforeEach(() => {
     traveler1 = new Traveler(travelerData[0]);
@@ -44,17 +48,23 @@ describe('Traveler class and methods', () => {
     expect(traveler1.trips.length).to.equal(4);
   });
 
+  it('Should be able to check the status of a trip', () => {
+    traveler1.addTripsForCurrentTraveler(tripData, destinationData);
+    traveler1.verifyTripStatus(currentDate);
+    expect(traveler1.trips[1].status).to.equal('past trip');
+  })
+
   it('Should be able to store trips for the current year', () => {
     traveler2.addTripsForCurrentTraveler(tripData, destinationData);
     expect(traveler2.trips.length).to.equal(4);
     expect(traveler2.tripsThisYear).to.eql([]);
-    traveler2.addTripsForCurrentYear('2021');
+    traveler2.addTripsForCurrentYear(yearStart);
     expect(traveler2.tripsThisYear.length).to.equal(1);
   });
 
   it('Should be able to calculate total amount spent on travel in the current year', () => {
     traveler2.addTripsForCurrentTraveler(tripData, destinationData);
-    traveler2.addTripsForCurrentYear('2021');
+    traveler2.addTripsForCurrentYear(yearStart);
     traveler2.calculateYearlyTotal();
     expect(traveler2.totalSpentThisYear).to.equal(4972);
   })

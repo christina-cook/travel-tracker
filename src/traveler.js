@@ -33,8 +33,7 @@ class Traveler {
   verifyTripStatus(currentDate) {
     this.trips.forEach(trip => {
       trip.updateTripStatus(currentDate);
-    })
-    console.log('current trips', this.trips)
+    });
   }
 
   addTripsForCurrentYear(year) {

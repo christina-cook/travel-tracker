@@ -33,17 +33,16 @@ class Trip {
   updateTripStatus(today) {
     this.determineTripEndDate();
     const tripStart = moment(this.departureDate).format('YYYY/MM/DD');
-    if (this.status === 'pending') {
-      this.status = 'trip pending';
+    if (moment(this.tripEndDate).isBefore(today)) {
+      this.status = 'past trip';
     } else if (moment(tripStart).isAfter(today) && this.status === 'approved') {
       this.status = 'upcoming trip';
-    } else if (moment(this.tripEndDate).isBefore(today)) {
-      this.status = 'past trip';
     } else if (moment(tripStart).isBefore(today) && moment(this.tripEndDate).isAfter(today)) {
       this.status = 'current trip';
+    } else if (this.status === 'pending') {
+      this.status = 'trip pending';
     }
   }
-
 }
 
 export default Trip;
