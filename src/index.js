@@ -143,7 +143,9 @@ const findDestinationID = (selectedDestination) => {
 const estimateNewTripCost = () => {
   if (destination.value && departureDate.value && tripDuration.value && totalTravelers.value) {
     formatNewTrip();
-    const destinationForNewTrip = destinations.find(destination => newTripInfo.destinationID === destination.id);
+    const destinationForNewTrip = destinations.find(destination => {
+      return newTripInfo.destinationID === destination.id;
+    });
     const newTrip = new Trip(newTripInfo, destinationForNewTrip);
     const estimatedTripCost = newTrip.calculateTripCost();
     const tripLocation = newTrip.destinationInfo.destination;

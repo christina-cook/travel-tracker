@@ -13,7 +13,7 @@ class Traveler {
   addTripsForCurrentTraveler(tripData, destinationData, today) {
     const currentUsersTrips = tripData.filter(trip => {
       return trip.userID === this.travelerID;
-    })
+    });
     let tripLocation;
     currentUsersTrips.forEach(trip => {
       destinationData.forEach(destination => {
@@ -54,7 +54,6 @@ class Traveler {
     this.totalSpentThisYear = +totalYearlyCost.toFixed(0);
     return this.totalSpentThisYear;
   }
-
 }
 
 export default Traveler;

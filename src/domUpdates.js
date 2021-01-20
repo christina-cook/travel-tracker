@@ -74,7 +74,6 @@ const domUpdates = {
     const estimatedCostText = document.querySelector('.estimated-cost');
     estimatedCostText.innerText = `Fill out the form to book your next trip.`;
   }
-
 }
 
 export default domUpdates;
