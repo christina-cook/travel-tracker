@@ -14,6 +14,7 @@ Jet Set Go is a travel tracking app developed by [Christina Cook](https://github
 - WebPack
 - Chai & Mocha
 - Local Server API
+- Moment.js
 
 ## Setup & Installation
 
