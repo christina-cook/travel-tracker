@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta name="viewport" content="width=device-width, intial-scale=1">
+    <title>Jet Set Go</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img class="app-logo" src="./images/logo.png" alt="jet set go logo" height="100px" width="100px">
+        <h1 class="app-name">Jet Set Go</h1>
+      </div>
+      <div class="welcome">
+        <p class="welcome-message"></p>
+        <img class="user-avatar hidden" src="./images/stewardess.png" alt="user avatar" height="50px" width="50px">
+      </div>
+    </header>
+    <section class="login-page">
+      <div class="login-container">
+        <form class="login-form">
+          <h2 class="login-title">Login</h2>
+          <p>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+          </p>
+          <p>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" minlength="10" maxlength="10" required>
+          </p>
+            <input type="submit" value="Sign In" class="login-button">
+        </form>
+      </div>
+    </section>
+    <main class="main-dashboard hidden">
+      <section class="top-section">
+        <aside class="form-container">
+          <form class="booking-form">
+            <h2 class="form-title">Book Your Next Trip</h2>
+            <p>
+              <label for="trip-destination">Destination:</label>
+              <select id="trip-destination" name="travel-location" class="dropdown" required>
+                <option value="" disabled selected hidden>Choose a destination</option>
+              </select>
+            </p>
+            <p>
+              <label for="departure-date">Departure Date:</label>
+              <input type="date" id="departure-date" name="departure-date" required>
+            </p>
+            <p>
+              <label for="trip-duration">Trip Duration (days):</label>
+              <input type="number" id="trip-duration" min="1" placeholder="Enter a number" required>
+            </p>
+            <p>
+              <label for="total-travelers">Number of Travelers:</label>
+              <input type="number" id="total-travelers" min="1" placeholder="Enter a number" required>
+            </p>
+            <div class="form-button-container">
+              <button class="form-button estimate-cost">Estimate Cost</button>
+              <button class="form-button book-trip">Book Trip</button>
+            </div>
+          </form>
+        </aside>
+        <section class="travel-cost">
+          <div class="annual-message-display">
+            <p class="annual-message">You've spent $0 on travel this year.</p>
+          </div>
+          <div class="estimated-cost-display">
+            <p class="estimated-cost">Fill out the form to book your next trip.</p>
+          </div>
+        </section>
+      </section>
+      <section class="trip-section">
+        <section class="all-trips">
+          <h2 class="user-trips">Trips:</h2>
+          <section class="trip-display"></section>
+        </section>
+      </section>
+    </main>
+  <script src="main.bundle.js"></script></body>
+</html>
